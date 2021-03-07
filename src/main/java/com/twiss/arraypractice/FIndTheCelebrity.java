@@ -6,8 +6,12 @@ public class FIndTheCelebrity {
 
     public static int findFamousPeople(int[][] candidates){
         Stack<Integer> people = new Stack<Integer>();
-        if (candidates.length<=0) return -1;
-        if (candidates.length==1) return 0;
+        if (candidates.length<=0) {
+            return -1;
+        }
+        if (candidates.length==1) {
+            return 0;
+        }
         for (int i = 0; i < candidates.length; i++ ){
             people.push(i);
         }
