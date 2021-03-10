@@ -30,7 +30,7 @@ public class MaximalRectangle {
             int[] down = new int[m];
             Stack<Integer> stack = new Stack<Integer>();
             for (int i = 0; i < m; i++) {
-                while (!stack.empty() && left[stack.peek()][j] >= numbers[i][j]) {
+                while (!stack.empty() && left[stack.peek()][j] >= left[i][j]) {
                     stack.pop();
                 }
                 up[i] = stack.empty() ? -1 : stack.peek();
@@ -38,7 +38,7 @@ public class MaximalRectangle {
             }
             stack.clear();
             for (int i = m - 1; i >= 0; i--) {
-                while (!stack.empty() && left[stack.peek()][j] >= numbers[i][j]) {
+                while (!stack.empty() && left[stack.peek()][j] >= left[i][j]) {
                     stack.pop();
                 }
                 down[i] = stack.empty() ? -1 : stack.peek();
@@ -46,9 +46,9 @@ public class MaximalRectangle {
             }
 
             for (int i = 0; i < m; i++) {
-                int high = down[i] - up[i] - 1;
-                int are = high * left[i][j];
-                ret = Math.max(ret, are);
+                int hight = down[i] - up[i] - 1;
+                int area = hight * left[i][j];
+                ret = Math.max(ret, area);
             }
         }
 
