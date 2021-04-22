@@ -48,7 +48,9 @@ public class TrappingRainWater {
                    break;
                }
                int left = stack.peek();
-               int currentWight =
+               int currentWight = i-left-1;
+               int currentHeight = Math.min(height[left],height[i])-height[top];
+                ans += currentWight*currentHeight;
             }
             stack.push(i);
         }
@@ -60,5 +62,8 @@ public class TrappingRainWater {
         int[] height = {0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1};
         int res = getTrappingRainWaterInDp(height);
         System.out.println(res);
+        int[] height2 = {0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1};
+        int res2 = getTrappingRainWaterInStack(height2);
+        System.out.println(res2);
     }
 }
