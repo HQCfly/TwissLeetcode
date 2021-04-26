@@ -1,25 +1,24 @@
 package com.twiss.arraypractice;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class TwoSum {
 
     public static List<Integer> findIndex(int[] numbers, int target){
         List<Integer> res = new ArrayList<Integer>();
-        int i = 0, j = numbers.length-1;
-        while (i<j){
-            int sum = numbers[i]+numbers[j];
-            if (sum==target){
+        Map<Integer,Integer> sumMap = new HashMap<>();
+        int n = numbers.length;
+        for (int i =0;i<n;++i){
+            int temp = target - numbers[i];
+            if (sumMap.containsKey(temp)){
+                res.add(sumMap.get(temp));
                 res.add(i);
-                res.add(j);
                 break;
             }
-            if (sum<target){
-                i++;
-            } else {
-                j--;
-            }
+            sumMap.put(numbers[i],i);
         }
         return res;
     }
