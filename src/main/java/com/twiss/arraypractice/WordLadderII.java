@@ -95,7 +95,7 @@ public class WordLadderII {
     }
 
     public static void main(String[] args) {
-        List<String> wordList = Arrays.asList("hot", "dot", "dog", "lot", "log","cog");
+        List<String> wordList = Arrays.asList("hot", "dot", "dog", "lot", "log", "cog");
         String beginWord = "hit";
         String endWord = "cog";
         List<List<String>> res = findLadders(beginWord, endWord, wordList);
