@@ -28,7 +28,10 @@ public class GeneralizedAbbreviation {
             res.add(cur);
             return;
         }
-
+        // 从低向上遍历，即先找到4
+        // 其次在找到3d
+        // 在找到2r1--->然后走后面逻辑寻找2rd
+        // 1o2--->然后走后面逻辑寻找1o1d/1or1/1ord
         dfs(word, i + 1, count + 1, cur, res);
 
         if (count != 0) {
