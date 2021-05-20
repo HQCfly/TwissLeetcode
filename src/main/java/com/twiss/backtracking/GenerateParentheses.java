@@ -18,11 +18,13 @@ public class GenerateParentheses {
     }
 
     private void backtrace(StringBuilder cur, int open, int close, int n, List<String> ans) {
+        // 括号都是成对的因此长度应该使n乘以2
         if (cur.length() == n * 2) {
             ans.add(cur.toString());
             return;
         }
-
+        // 先将左边(((都选出来
+        // 其次再将((都选出来
         if (open < n) {
             cur.append("(");
             backtrace(cur, open + 1, close, n, ans);
