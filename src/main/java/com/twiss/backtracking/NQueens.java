@@ -32,7 +32,7 @@ public class NQueens {
             return;
         }
         for (int i = 0; i < n; i++) {
-            if (!isValid(n,i, row, chessBoard)) {
+            if (!isValid(n, i, row, chessBoard)) {
                 continue;
             }
             chessBoard[row][i] = 'Q';
@@ -41,7 +41,7 @@ public class NQueens {
         }
     }
 
-    private boolean isValid(int n,int col,int row, char[][] chessboard) {
+    private boolean isValid(int n, int col, int row, char[][] chessboard) {
         //判断列是否存在皇后
         for (int r = 0; r < n; r++) {
             if (chessboard[r][col] == 'Q')
@@ -63,9 +63,50 @@ public class NQueens {
         return true;
     }
 
+    private List<String[]> solveQueens2(int n) {
+        List<String[]> res = new ArrayList<>();
+        int[] columnRow = new int[n];
+        backtrace2(n,0,columnRow,res);
+        return res;
+    }
+
+    private void backtrace2(int n, int row, int[] columnRow, List<String[]> res) {
+        if (row == n) {
+            String[] cur = new String[n];
+            for (int r = 0; r < n; r++) {
+                cur[r] = "";
+                for (int col = 0; col < n; col++) {
+                    cur[r] += (columnRow[r] == col) ? "Q" : ".";
+                }
+            }
+            res.add(cur);
+            return;
+        }
+
+        for (int i = 0; i < n; i++) {
+            columnRow[row] = i;
+            if (!isValid(i,row,columnRow)){
+                continue;
+            }
+            backtrace2(n,row+1,columnRow,res);
+        }
+    }
+
+    private boolean isValid(int col, int row, int[] columnRow) {
+        for (int r = 0; r < row; r++) {
+            if (columnRow[r] == col || row - r == Math.abs(columnRow[r] - col)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public static void main(String[] args) {
         int n = 4;
         List<List<String>> res = new NQueens().solveNQueens(n);
         System.out.println(JSONObject.toJSONString(res));
+
+        List<String[]> res2 = new NQueens().solveQueens2(n);
+        System.out.println(JSONObject.toJSONString(res2));
     }
 }
