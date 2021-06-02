@@ -8,11 +8,7 @@ public class RegularExpressionMatching {
 
     private boolean isMatch(String s, String p) {
         if (p==null){
-            if (s==null){
-                return true;
-            }else{
-                return false;
-            }
+            return s == null;
         }
 
         if (s==null && p.length()==1){
