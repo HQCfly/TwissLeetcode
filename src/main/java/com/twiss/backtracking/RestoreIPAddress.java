@@ -9,10 +9,20 @@ import java.util.List;
  */
 public class RestoreIPAddress {
     
-    private List<String> getNewIPAddress() {
+    private List<String> getNewIPAddress(String ip) {
         List<String> res = new ArrayList<>();
 
         return res;
+    }
+
+    private void dfs(int n, String cur, List<String> res){
+        if (cur.length()==n){
+            res.add(cur);
+            return;
+        }
+
+
+
     }
 
     public static void main(String[] args) {
