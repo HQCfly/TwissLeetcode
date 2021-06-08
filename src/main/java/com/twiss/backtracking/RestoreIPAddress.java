@@ -1,5 +1,7 @@
 package com.twiss.backtracking;
 
+import com.alibaba.fastjson.JSONObject;
+
 import java.util.ArrayList;
 import java.util.Deque;
 import java.util.List;
@@ -37,6 +39,7 @@ public class RestoreIPAddress {
 
     public static void main(String[] args) {
         String s = "25525511135";
-        List<String> res = new RestoreIPAddress().getNewIPAddress();
+        List<String> res = new RestoreIPAddress().getNewIPAddress(s);
+        System.out.println(JSONObject.toJSONString(res));
     }
 }
