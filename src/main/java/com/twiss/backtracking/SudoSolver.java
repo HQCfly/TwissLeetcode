@@ -1,10 +1,19 @@
 package com.twiss.backtracking;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @Author: Twiss
  * @Date: 2021/6/10 11:00 下午
  */
 public class SudoSolver {
+
+    private boolean[][] line = new boolean[9][9];
+    private boolean[][] column = new boolean[9][9];
+    private boolean[][][] block = new boolean[3][3][9];
+    private boolean valid = false;
+    private List<int[]> spaces = new ArrayList<int[]>();
 
     public void solveSudoku(char[][] board) {
         for (int i = 0; i < 9; ++i) {
@@ -20,8 +29,27 @@ public class SudoSolver {
 
         dfs(board, 0);
     }
+    public void dfs(char[][] board, int pos) {
+        if (pos == spaces.size()) {
+            valid = true;
+            return;
+        }
 
+        int[] space = spaces.get(pos);
+        int i = space[0], j = space[1];
+        for (int digit = 0; digit < 9 && !valid; ++digit) {
+            if (!line[i][digit] && !column[j][digit] && !block[i / 3][j / 3][digit]) {
+                line[i][digit] = column[j][digit] = block[i / 3][j / 3][digit] = true;
+                board[i][j] = (char) (digit + '0' + 1);
+                dfs(board, pos + 1);
+                line[i][digit] = column[j][digit] = block[i / 3][j / 3][digit] = false;
+            }
+        }
+    }
     public static void main(String[] args) {
+        int n = 9;
+        char[][] board = new char[n][n];
+
 
     }
 }
