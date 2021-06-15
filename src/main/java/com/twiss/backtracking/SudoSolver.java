@@ -33,6 +33,7 @@ public class SudoSolver {
     }
 
     public void dfs(char[][] board, int pos) {
+
         if (pos == spaces.size()) {
             valid = true;
             return;
@@ -51,7 +52,7 @@ public class SudoSolver {
     }
 
     public static void main(String[] args) {
-        char[][] board ={{'5', '3', '.', '.', '7', '.', '.', '.', '.'},
+        char[][] board = {{'5', '3', '.', '.', '7', '.', '.', '.', '.'},
                 {'6', '.', '.', '1', '9', '5', '.', '.', '.'},
                 {'.', '9', '8', '.', '.', '.', '.', '6', '.'},
                 {'8', '.', '.', '.', '6', '.', '.', '.', '3'},
