@@ -11,6 +11,7 @@ import java.util.List;
  */
 public class SudoSolver {
 
+    // 行的布尔值
     private boolean[][] line = new boolean[9][9];
     private boolean[][] column = new boolean[9][9];
     private boolean[][][] block = new boolean[3][3][9];
