@@ -6,6 +6,6 @@ package com.twiss.backtracking;
  */
 public class WildcardMatching {
     public static void main(String[] args) {
-
+        String word = "";
     }
 }
