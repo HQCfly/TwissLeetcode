@@ -5,6 +5,12 @@ package com.twiss.backtracking;
  * @Date: 2021/6/17 11:23 下午
  */
 public class WildcardMatching {
+
+    private boolean getResult(String words) {
+
+        return true;
+    }
+
     public static void main(String[] args) {
         String word = "";
     }
