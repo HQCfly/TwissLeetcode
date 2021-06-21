@@ -2,54 +2,57 @@ package com.twiss.backtracking;
 
 import com.alibaba.fastjson.JSONObject;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * @Author: Twiss
  * @Date: 2021/6/10 11:00 下午
  */
 public class SudoSolver {
 
-    // 行的布尔值
-    private boolean[][] line = new boolean[9][9];
-    private boolean[][] column = new boolean[9][9];
-    private boolean[][][] block = new boolean[3][3][9];
-    private boolean valid = false;
-    private List<int[]> spaces = new ArrayList<int[]>();
 
     public void solveSudoku(char[][] board) {
-        for (int i = 0; i < 9; ++i) {
-            for (int j = 0; j < 9; ++j) {
-                if (board[i][j] == '.') {
-                    spaces.add(new int[]{i, j});
-                } else {
-                    int digit = board[i][j] - '0' - 1;
-                    line[i][digit] = column[j][digit] = block[i / 3][j / 3][digit] = true;
-                }
+
+        if (board == null || board.length != 9 || board[0].length != 9) return;
+
+        // 3个布尔数组 表明行 列 还有 3 * 3 的方格的数字是否被使用过
+        boolean[][] row = new boolean[9][9];
+        boolean[][] col = new boolean[9][9];
+        boolean[][] box = new boolean[9][9];
+        // 初始化
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                if (board[i][j] == '.') continue;
+                int num = board[i][j] - '1', k = (i / 3) * 3 + j / 3;
+                row[i][num] = col[j][num] = box[k][num] = true;
             }
         }
-
-        dfs(board, 0);
+        // 递归尝试填充数组
+        dfs(board,0, row, col, box);
     }
 
-    public void dfs(char[][] board, int pos) {
-
-        if (pos == spaces.size()) {
-            valid = true;
-            return;
+    public boolean dfs(char[][] board, int n, boolean[][] row, boolean[][] col, boolean[][] box) {
+        // 边界校验，如果填充完成返回true，都在false
+        if (n==81){
+            return true;
         }
-
-        int[] space = spaces.get(pos);
-        int i = space[0], j = space[1];
-        for (int digit = 0; digit < 9 && !valid; ++digit) {
-            if (!line[i][digit] && !column[j][digit] && !block[i / 3][j / 3][digit]) {
-                line[i][digit] = column[j][digit] = block[i / 3][j / 3][digit] = true;
-                board[i][j] = (char) (digit + '0' + 1);
-                dfs(board, pos + 1);
-                line[i][digit] = column[j][digit] = block[i / 3][j / 3][digit] = false;
+        // i表示行，j表示列
+        int i = n/9, j = n%9;
+        // 如果第i行j列是.则表示可以填充
+        if (board[i][j] != '.') return dfs(board, n + 1, row, col, box);
+        // 3*3数字方格
+        int k = (i / 3) * 3 + j / 3;
+        for (int num=0;num<9;num++){
+            if (row[i][num]||col[j][num]||box[k][num]){
+                continue;
             }
+            board[i][j] = (char) ('1'+num);
+            row[i][num]=col[j][num]=box[k][num]=true;
+            if (dfs(board,n+1,row,col,box)){
+                return true;
+            }
+            row[i][num]=col[j][num]=box[k][num]=false;
         }
+        board[i][j] = '.';
+        return false;
     }
 
     public static void main(String[] args) {
@@ -65,6 +68,6 @@ public class SudoSolver {
 
         SudoSolver sudoSolver = new SudoSolver();
         sudoSolver.solveSudoku(board);
-        System.out.println(JSONObject.toJSONString(sudoSolver.spaces));
+        System.out.println(JSONObject.toJSONString(board));
     }
 }
