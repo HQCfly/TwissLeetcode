@@ -7,4 +7,8 @@ package com.twiss.backtracking;
 public class WordBreakII {
 
 
+    public static void main(String[] args) {
+
+    }
+
 }
