@@ -13,7 +13,6 @@ public class WordBreakII {
 
     private List<String> getResult(String words,List<String> wordDict) {
 
-
         return new ArrayList<>();
     }
 
