@@ -44,6 +44,8 @@ public class WordLadderII {
                     for (char c = 'a'; c <= 'z'; c++) {
                         charArray[j] = c;
                         String nextWord = String.valueOf(charArray);
+                        // 针对同层的情况下之前已经把nextWord移除dict的，
+                        // 但是该nextWord是由另外一个currentWord转变而成的情况
                         if (steps.containsKey(nextWord) && step == steps.get(nextWord)) {
                             from.get(nextWord).add(currWord);
                         }
@@ -72,7 +74,6 @@ public class WordLadderII {
                 break;
             }
         }
-
         // 第 2 步：深度优先遍历找到所有解，从 endWord 恢复到 beginWord ，所以每次尝试操作 path 列表的头部
         if (found) {
             Deque<String> path = new ArrayDeque<>();
