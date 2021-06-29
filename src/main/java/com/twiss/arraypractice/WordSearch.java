@@ -11,7 +11,7 @@ public class WordSearch {
         boolean[][] visited = new boolean[h][k];
         for (int i = 0; i < h; ++i) {
             for (int j = 0; j < k; ++j) {
-                if (check(grid, visited, i, j, word, k)) {
+                if (check(grid, visited, i, j, word, 0)) {
                     return true;
                 }
             }
@@ -35,7 +35,7 @@ public class WordSearch {
         // 在四个位置寻找能与目标单词一样的单词
         for (int[] dir : direction) {
             int newI = i + dir[0], newJ = j + dir[1];
-            if (newI > 0 && newI < grid.length && newJ > 0 && newJ < grid[0].length) {
+            if (newI >= 0 && newI < grid.length && newJ >= 0 && newJ < grid[0].length) {
                 if (!visited[newI][newJ]){
                     boolean flag = check(grid,visited,newI,newJ,word,k+1);
                     if (flag){
