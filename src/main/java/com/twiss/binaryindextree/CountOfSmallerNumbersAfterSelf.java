@@ -9,6 +9,8 @@ import java.util.*;
  * @Date: 2021/6/29 11:36 下午
  */
 public class CountOfSmallerNumbersAfterSelf {
+
+    /**************** 方法1： 离散树状数组： 桶排序 ************************/
     // 桶排序数组[5,2,6,1]
     private int[] bucket = null;
     // 桶数组的值[0,0,0,0]
@@ -26,7 +28,6 @@ public class CountOfSmallerNumbersAfterSelf {
             int preSum = query(id-1);
             // 将preSum赋值到result的第i位置上
             result.add(preSum);
-            System.out.println("id: "+id+" bucket: "+JSONObject.toJSONString(bucket)+" value: "+JSONObject.toJSONString(bucketValue));
         }
         Collections.reverse(result);
         return result;
@@ -75,6 +76,7 @@ public class CountOfSmallerNumbersAfterSelf {
         return Arrays.binarySearch(bucket,x);
     }
 
+    /**************** 方法2： 归并排序 ************************/
 
     public static void main(String[] args) {
         int[] number = {5, 2, 6, 1};
