@@ -1,6 +1,7 @@
 package com.twiss.binaryindextree;
 
 import com.alibaba.fastjson.JSONObject;
+import scala.Int;
 
 import java.util.*;
 
@@ -77,6 +78,18 @@ public class CountOfSmallerNumbersAfterSelf {
     }
 
     /**************** 方法2： 归并排序 ************************/
+    private int[] index;
+    private int[] temp;
+    private int[] tempIndex;
+    private int[] anx;
+
+    public List<Integer> countSmallerByMergeSort(int[] numbers){
+        List<Integer> list = new ArrayList<>();
+
+
+        return list;
+    }
+
 
     public static void main(String[] args) {
         int[] number = {5, 2, 6, 1};
