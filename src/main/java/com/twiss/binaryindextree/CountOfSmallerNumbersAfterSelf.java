@@ -117,6 +117,7 @@ public class CountOfSmallerNumbersAfterSelf {
         int tempLeft = left, tempMid = mid+1;
         while (tempLeft<=mid&&tempMid<=right){
             // 寻找比当前元素以后小元素，即寻找number[x] > number[subRight] 并累加1
+            // 对于原始数组的顺序不需要重新排列
             if (number[index[tempLeft]]<= number[index[tempMid]]){
                 tempArr[i] = index[tempMid];
                 i++;
