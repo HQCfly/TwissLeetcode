@@ -116,12 +116,14 @@ public class CountOfSmallerNumbersAfterSelf {
         int i = 0;
         int tempLeft = left, tempMid = mid+1;
         while (tempLeft<=mid&&tempMid<=right){
+            // 寻找比当前元素以后小元素，即寻找number[x] > number[subRight] 并累加1
             if (number[index[tempLeft]]<= number[index[tempMid]]){
                 tempArr[i] = index[tempMid];
                 i++;
                 tempMid++;
             }else {
                 //res[k]在res中的位置即nums[k]在nums中的位置,(right-i2+1)是当前右半（有序）数组中一定小于nums[k]的元素个数
+                // 将当前number[index[tempLeft]] < number[index[tempMid]]的左边元素大的索引 赋值给临时数组
                 tempArr[i]=index[tempLeft];
                 res[tempArr[i]]+=(right - tempMid + 1);
                 i++;
