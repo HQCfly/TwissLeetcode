@@ -1,9 +1,9 @@
 package com.twiss.binaryindextree;
 
 import com.alibaba.fastjson.JSONObject;
-import scala.Int;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * @Author: Twiss
@@ -16,6 +16,7 @@ public class CountOfSmallerNumbersAfterSelf {
     private int[] bucket = null;
     // 桶数组的值[0,0,0,0]
     private int[] bucketValue = null;
+
     private List<Integer> countSmaller(int[] nums) {
         int length = nums.length;
         List<Integer> result = new ArrayList<>(length);
@@ -26,7 +27,7 @@ public class CountOfSmallerNumbersAfterSelf {
             // 更新bucketValue值：出现nums[i]的次数
             update(id);
             // 取bucketValue前id-1的前缀和
-            int preSum = query(id-1);
+            int preSum = query(id - 1);
             // 将preSum赋值到result的第i位置上
             result.add(preSum);
         }
@@ -44,17 +45,18 @@ public class CountOfSmallerNumbersAfterSelf {
         int ret = 0;
         while (pos >= 0) {
             ret += bucketValue[pos];
-            pos --;
+            pos--;
         }
         return ret;
     }
 
     /**
      * 更新查找到的bucket value值
+     *
      * @param pos
      */
-    private void update(int pos){
-        bucketValue[pos] = bucketValue[pos]+1;
+    private void update(int pos) {
+        bucketValue[pos] = bucketValue[pos] + 1;
     }
 
     private void discretization(int[] number) {
@@ -74,20 +76,70 @@ public class CountOfSmallerNumbersAfterSelf {
     }
 
     private int getId(int x) {
-        return Arrays.binarySearch(bucket,x);
+        return Arrays.binarySearch(bucket, x);
     }
 
     /**************** 方法2： 归并排序 ************************/
-    private int[] index;
-    private int[] temp;
-    private int[] tempIndex;
-    private int[] anx;
 
-    public List<Integer> countSmallerByMergeSort(int[] numbers){
-        List<Integer> list = new ArrayList<>();
+    /**
+     * 原来的归并排序的算法是直接移动数组元素，现在需要定位排序之前元素的位置，
+     * 所以merge算法中移动的是元素的下标，即索引数组元素
+     * merge时对索引数组的排序规则是不再是直接比较其元素大小，而是取对应位置处的num元素比较大小
+     */
+    private int[] res;
 
+    public List<Integer> countSmallerByMergeSort(int[] numbers) {
 
-        return list;
+        int length = numbers.length;
+        this.res = new int[length];
+        int[] index = new int[length];
+
+        for (int i = 0; i < length; i++) {
+            index[i] = i;
+        }
+        merge(numbers, index, 0, length - 1);
+        return Arrays.stream(res).boxed().collect(Collectors.toList());
+    }
+
+    private void merge(int[] number, int[] index, int left, int right) {
+        int mid = left + ((right - left) >> 1);
+        if (left < right) {
+            merge(number, index, left, mid);
+            merge(number, index, mid + 1, right);
+            mergeSort(number,index,left,mid,right);
+        }
+
+    }
+
+    private void mergeSort(int[] number, int[] index, int left, int mid, int right) {
+        int[] tempArr = new int[right-left+1];
+        int i = 0;
+        int tempLeft = left, tempMid = mid+1;
+        while (tempLeft<=mid&&tempMid<=right){
+            if (number[index[tempLeft]]<= number[index[tempMid]]){
+                tempArr[i] = index[tempMid];
+                i++;
+                tempMid++;
+            }else {
+                //res[k]在res中的位置即nums[k]在nums中的位置,(right-i2+1)是当前右半（有序）数组中一定小于nums[k]的元素个数
+                tempArr[i]=index[tempLeft];
+                res[tempArr[i]]+=(right - tempMid + 1);
+                i++;
+                tempLeft++;
+            }
+        }
+
+        while (tempLeft<=mid){
+            tempArr[i++] = index[tempLeft++];
+        }
+
+        while (tempMid<=right){
+            tempArr[i++] = index[tempMid++];
+        }
+
+        for (int k = 0;k< tempArr.length;k++){
+            index[left+k] = tempArr[k];
+        }
     }
 
 
@@ -95,5 +147,9 @@ public class CountOfSmallerNumbersAfterSelf {
         int[] number = {5, 2, 6, 1};
         List<Integer> res = new CountOfSmallerNumbersAfterSelf().countSmaller(number);
         System.out.println(JSONObject.toJSONString(res));
+
+        int[] numbers = {5, 2, 6, 1};
+        List<Integer> res2 = new CountOfSmallerNumbersAfterSelf().countSmallerByMergeSort(numbers);
+        System.out.println(JSONObject.toJSONString(res2));
     }
 }
