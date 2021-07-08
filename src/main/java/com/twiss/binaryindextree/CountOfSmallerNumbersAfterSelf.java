@@ -106,45 +106,83 @@ public class CountOfSmallerNumbersAfterSelf {
         if (left < right) {
             merge(number, index, left, mid);
             merge(number, index, mid + 1, right);
-            mergeSort(number,index,left,mid,right);
+            mergeSort(number, index, left, mid, right);
         }
 
     }
 
     private void mergeSort(int[] number, int[] index, int left, int mid, int right) {
-        int[] tempArr = new int[right-left+1];
+        int[] tempArr = new int[right - left + 1];
         int i = 0;
-        int tempLeft = left, tempMid = mid+1;
-        while (tempLeft<=mid&&tempMid<=right){
+        int tempLeft = left, tempMid = mid + 1;
+        while (tempLeft <= mid && tempMid <= right) {
             // 寻找比当前元素以后小元素，即寻找number[x] > number[subRight] 并累加1
             // 对于原始数组的顺序不需要重新排列
-            if (number[index[tempLeft]]<= number[index[tempMid]]){
+            if (number[index[tempLeft]] <= number[index[tempMid]]) {
                 tempArr[i] = index[tempMid];
                 i++;
                 tempMid++;
-            }else {
+            } else {
                 //res[k]在res中的位置即nums[k]在nums中的位置,(right-i2+1)是当前右半（有序）数组中一定小于nums[k]的元素个数
                 // 将当前number[index[tempLeft]] < number[index[tempMid]]的左边元素大的索引 赋值给临时数组
-                tempArr[i]=index[tempLeft];
-                res[tempArr[i]]+=(right - tempMid + 1);
+                tempArr[i] = index[tempLeft];
+                res[tempArr[i]] += (right - tempMid + 1);
                 i++;
                 tempLeft++;
             }
         }
 
-        while (tempLeft<=mid){
+        while (tempLeft <= mid) {
             tempArr[i++] = index[tempLeft++];
         }
 
-        while (tempMid<=right){
+        while (tempMid <= right) {
             tempArr[i++] = index[tempMid++];
         }
 
-        for (int k = 0;k< tempArr.length;k++){
-            index[left+k] = tempArr[k];
+        for (int k = 0; k < tempArr.length; k++) {
+            index[left + k] = tempArr[k];
         }
     }
 
+    /**************** 方法3： 二叉索引树 ************************/
+
+    /**
+     *        1
+     *          \
+     *          6
+     *        /
+     *        2
+     *          \
+     *          5
+     * @param numbers
+     * @return
+     */
+    private List<Integer> countSmallerByBinaryIndexTree(int[] numbers) {
+        Integer[] res = new Integer[numbers.length];
+        Arrays.fill(res, 0);
+        TreeNode root = null;
+        for (int i = numbers.length - 1; i >= 0; i--) {
+            root = insert(root, new TreeNode(numbers[i]), res, i);
+        }
+        return Arrays.asList(res);
+    }
+
+    private TreeNode insert(TreeNode root, TreeNode node, Integer[] res, int i) {
+        if (root == null) {
+            root = node;
+            return root;
+        }
+
+        if (root.val >= node.val) {
+            root.count++;
+            root.left = insert(root.left, node, res, i);
+        } else {
+            res[i] += root.count + 1;
+            root.right = insert(root.right, node, res, i);
+        }
+        return root;
+    }
 
     public static void main(String[] args) {
         int[] number = {5, 2, 6, 1};
@@ -154,5 +192,23 @@ public class CountOfSmallerNumbersAfterSelf {
         int[] numbers = {5, 2, 6, 1};
         List<Integer> res2 = new CountOfSmallerNumbersAfterSelf().countSmallerByMergeSort(numbers);
         System.out.println(JSONObject.toJSONString(res2));
+
+        int[] numbers1 = {5, 2, 6, 1};
+        List<Integer> res3 = new CountOfSmallerNumbersAfterSelf().countSmallerByBinaryIndexTree(numbers1);
+        System.out.println(JSONObject.toJSONString(res3));
+    }
+}
+
+class TreeNode {
+    int val;
+    int count;
+    TreeNode left;
+    TreeNode right;
+
+    TreeNode(int val) {
+        this.val = val;
+        left = null;
+        right = null;
+        count = 0;
     }
 }
