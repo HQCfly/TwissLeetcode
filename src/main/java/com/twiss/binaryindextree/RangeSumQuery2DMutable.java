@@ -91,25 +91,6 @@ public class RangeSumQuery2DMutable {
     }
 
     public static void main(String[] args) {
-        /**
-         *                            36 [0-5]
-         *                       /              \
-         *                    9 [0-2]           27 [3-5]
-         *                  /       \           /       \
-         *                 4 [0-1]   5 [2]     16 [3-4]  11 [5]
-         *               /      \      / \     /    \       / \
-         *              1 [0]   3 [1]  0 0   7[3]   9[4]   0  0
-         *
-         *           treeNode[] = [36 ,9 , 27 , 4 , 5 , 16 , 11 , 1 , 3 , 0 , 0 , 7 , 9 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ]
-         *                         0,  1 , 2 ,  3,  4 , 5 ,  6  , 7 , 8 , 9 , 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23
-         *
-         */
-        int[] nums = {1,3,5,7,9,11};
-        RangeSumQuery2DMutable numArr = new RangeSumQuery2DMutable(nums);
-        System.out.println("originTreeNode: "+JSONObject.toJSONString(numArr.treeNode));
-        int resultSum = numArr.sumRange(0,2);
-        numArr.update(1,2);
-        System.out.println(resultSum);
-        System.out.println("updateTreeNode: "+JSONObject.toJSONString(numArr.treeNode));
+
     }
 }
