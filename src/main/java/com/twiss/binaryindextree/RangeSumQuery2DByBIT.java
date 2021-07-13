@@ -6,7 +6,7 @@ import com.alibaba.fastjson.JSONObject;
  * @Author: Twiss
  * @Date: 2021/7/9 7:59 下午
  */
-public class RangeSumQuery2DByTreeArray {
+public class RangeSumQuery2DByBIT {
 
     int[] tree;
     int[] nums;
@@ -30,7 +30,7 @@ public class RangeSumQuery2DByTreeArray {
         }
     }
 
-    public RangeSumQuery2DByTreeArray(int[] numbers){
+    public RangeSumQuery2DByBIT(int[] numbers){
         this.nums = numbers;
         n = numbers.length;
         tree = new int[n+1];
@@ -50,7 +50,7 @@ public class RangeSumQuery2DByTreeArray {
 
     public static void main(String[] args) {
         int[] nums = {1,3,5,7,9,11};
-        RangeSumQuery2DByTreeArray rangeSumArr = new RangeSumQuery2DByTreeArray(nums);
+        RangeSumQuery2DByBIT rangeSumArr = new RangeSumQuery2DByBIT(nums);
         System.out.println("originTreeNode: "+ JSONObject.toJSONString(nums));
         int resultSum =rangeSumArr.sumRange(0,2);
         System.out.println(resultSum);
