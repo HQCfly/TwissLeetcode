@@ -8,87 +8,50 @@ import com.alibaba.fastjson.JSONObject;
  */
 public class RangeSumQuery2DMutable {
 
-    int[] treeNode;
-    int[] nums;
+    private int[][] BITree2D;
+    private int[][] matrix;
 
-    public RangeSumQuery2DMutable(int[] nums) {
-        this.nums = nums;
-        treeNode = new int[nums.length * 4];
-        buildTree(0, 0, nums.length - 1);
-    }
-
-    private void buildTree(int curNode, int start, int end) {
-        if (start == end) {
-            treeNode[curNode] = nums[start];
+    public RangeSumQuery2DMutable(int[][] matrix) {
+        if (matrix == null || matrix.length == 0) {
             return;
         }
 
-        int mid = start + ((end - start) >> 1);
-
-        int leftNode = curNode * 2 + 1;
-        int rightNode = curNode * 2 + 2;
-
-        // 构建左子节点
-        buildTree(leftNode, start, mid);
-        // 构建右子节点
-        buildTree(rightNode, mid + 1, end);
-
-        treeNode[curNode] = treeNode[leftNode] + treeNode[rightNode];
+        // 仍然以比 matrix 长，宽都要大1的 size 创建 BITree2D
+        this.BITree2D = new int[matrix.length + 1][matrix[0].length + 1];
+        // 在初始化 BITree2D 时需要，或者也可以单独写一个 init 函数
+        // 但是这里为了实现 update() 函数的复用创建了该数组
+        this.matrix = new int[matrix.length][matrix[0].length];
+        for (int row = 0; row < matrix.length; row++) {
+            for (int col = 0; col < matrix[row].length; col++) {
+                update(row, col, matrix[row][col]);
+            }
+        }
     }
 
-    private void update(int index, int value) {
-        updateHelp(0, 0, nums.length - 1, index, value);
+    public void update(int row, int col, int val) {
+        int delta = val - matrix[row][col];
+        matrix[row][col] = val;
+        for (int i = row + 1; i < BITree2D.length; i += i & -i) {
+            for (int j = col + 1; j < BITree2D[i].length; j += j & -j) {
+                BITree2D[i][j] += delta;
+            }
+        }
     }
 
-    private void updateHelp(int currentNode, int start, int end, int index, int value) {
-        if (start > end) {
-            return;
-        }
-        if (start == end) {
-            nums[index] = value;
-            treeNode[currentNode] = value;
-            return;
-        }
-
-        int mid = start + ((end - start) >> 1);
-        int leftNode = currentNode * 2 + 1;
-        int rightNode = currentNode * 2 + 2;
-
-        if (index >= start && index <= mid) {
-            updateHelp(leftNode, start, mid, index, value);
-        } else {
-            updateHelp(rightNode, mid + 1, end, index, value);
-        }
-
-        treeNode[currentNode] = treeNode[leftNode] + treeNode[rightNode];
+    // 画图或者想像一下即可明白：利用[(0,0) - (row2, col2)]的大矩形分别减去
+    // 矩形[(0,0) - (row1, col2)] 和 矩形[(0,0) - (row2, col1)] 最后加上被重复减去的部分矩形 [(0,0) - (row1, col1)]
+    public int sumRegion(int row1, int col1, int row2, int col2) {
+        return getSum(row2 + 1, col2 + 1) - getSum(row1, col2 + 1) - getSum(row2 + 1, col1) + getSum(row1, col1);
     }
 
-    private int sumRange(int left, int right) {
-        return sum(0, 0, nums.length - 1, left, right);
-    }
-
-    private int sum(int currentNode, int start, int end, int left, int right) {
-        // 区间不在[left,right]范围内返回0
-        if (left < start || right > end) {
-            return 0;
+    private int getSum(int row, int col) {
+        int sum = 0;
+        for (int i = row; i > 0; i -= i & -i) {
+            for (int j = col; j > 0; j -= j & -j) {
+                sum += BITree2D[i][j];
+            }
         }
-        // 区间在[left,right]范围直接返回treeNode[currentNode]
-        else if (left <= start && right >= end) {
-            return treeNode[currentNode];
-        }
-
-        // 当寻找到叶子节点直接返回treeNode[currentNode]
-        else if (start == end) {
-            return treeNode[currentNode];
-        }
-
-        int mid = start + ((end - start) >> 1);
-        int leftNode = currentNode * 2 + 1;
-        int rightNode = currentNode * 2 + 2;
-
-        int leftSum = sum(leftNode, start, mid, left, right);
-        int rightSum = sum(rightNode, mid + 1, end, left, right);
-        return leftSum + rightSum;
+        return  sum;
     }
 
     public static void main(String[] args) {
@@ -99,7 +62,13 @@ public class RangeSumQuery2DMutable {
                 {4, 1, 0, 1, 7},
                 {1, 0, 3, 0, 5}
         };
-
-
+        RangeSumQuery2DMutable rangeSumArr = new RangeSumQuery2DMutable(matrix);
+        System.out.println("originTreeNode: "+ JSONObject.toJSONString(rangeSumArr.BITree2D));
+        int resultSum = rangeSumArr.sumRegion(2,1,4,3);
+        System.out.println("resultSum: "+resultSum);
+        rangeSumArr.update(3,2,2);
+        System.out.println("updateTreeNode: "+ JSONObject.toJSONString(rangeSumArr.BITree2D));
+        int resultSum2 = rangeSumArr.sumRegion(2,1,4,3);
+        System.out.println("resultSum2: "+resultSum2);
     }
 }
