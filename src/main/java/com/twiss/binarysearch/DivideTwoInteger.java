@@ -33,7 +33,7 @@ public class DivideTwoInteger {
 
     }
 
-    private  long mul(long a, long k){
+    long mul(long a, long k){
         int ans = 0;
         while (k>0){
             // 当k=1时将ans结果取出
