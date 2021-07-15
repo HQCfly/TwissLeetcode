@@ -36,9 +36,11 @@ public class DivideTwoInteger {
     private  long mul(long a, long k){
         int ans = 0;
         while (k>0){
+            // 当k=1时将ans结果取出
             if ((k&1)==1){
                 ans +=a;
             }
+            // k/2操作
             k>>=1;
             a+=a;
         }
