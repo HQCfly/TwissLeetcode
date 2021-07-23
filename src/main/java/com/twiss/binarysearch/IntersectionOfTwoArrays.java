@@ -57,6 +57,8 @@ public class IntersectionOfTwoArrays {
                 if (index==0||number1!=intersection[index-1]){
                     intersection[index++] = number1;
                 }
+                index1++;
+                index2++;
             } else if (number1<number2){
                 index1++;
             } else {
