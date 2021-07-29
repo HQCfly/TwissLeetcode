@@ -6,6 +6,6 @@ package com.twiss.binarysearch;
  */
 public class RussianDollEnvelopes {
     public static void main(String[] args) {
-
+        int[] a = {1,2};
     }
 }
