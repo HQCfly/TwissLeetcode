@@ -30,7 +30,7 @@ public class RussianDollEnvelopes {
     }
 
     private boolean check(int[][] envelopes, int mid, int j) {
-        return envelopes[mid][0]<envelopes[j][0]&&envelopes[mid][1]<envelopes[j][1];
+        return envelopes[mid][0] < envelopes[j][0] && envelopes[mid][1] < envelopes[j][1];
     }
 
     public static void main(String[] args) {
