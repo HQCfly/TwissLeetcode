@@ -65,6 +65,34 @@ public class SearchA2DMatrixII {
         return false;
     }
 
+    public boolean searchMatrixByDivideMatrix(int[][] matrix, int target){
+        if (matrix == null || matrix.length == 0) {
+            return false;
+        }
+        return searchRec(0,0,matrix[0].length-1,matrix.length-1,matrix,target);
+    }
+
+    private boolean searchRec(int leftColumn, int upRow, int rightColumn, int downRow,
+                              int[][] matrix,int target){
+        if (leftColumn>rightColumn||upRow>downRow){
+            return false;
+        } else if (target<matrix[upRow][leftColumn]||target>matrix[downRow][rightColumn]){
+            return false;
+        }
+        int mid = leftColumn+(rightColumn-leftColumn)/2;
+        int row = upRow;
+        while (row<=downRow&&matrix[row][mid]<=target){
+            if (target==matrix[row][mid]){
+                return true;
+            }
+            row++;
+        }
+        // 左上换成 row: row, column: leftColumn 右下换成 row: dowRow column: mid-1, 或者
+        // 左上换成 row: mid+1, column: upRow    右下换成: row: row-1 column: rightColumn
+        return searchRec(leftColumn,row,mid-1,downRow,matrix,target)
+                ||searchRec(mid+1,upRow,rightColumn,row-1,matrix,target);
+    }
+
     public static void main(String[] args) {
         int[][] matrix = {
                 {1, 4, 7, 11, 15},
@@ -79,5 +107,8 @@ public class SearchA2DMatrixII {
 
         boolean res2 = new SearchA2DMatrixII().searchMatrixByBinarySearchRowAndColumn(matrix,target);
         System.out.println(res2);
+
+        boolean res3 = new SearchA2DMatrixII().searchMatrixByDivideMatrix(matrix,target);
+        System.out.println(res3);
     }
 }
