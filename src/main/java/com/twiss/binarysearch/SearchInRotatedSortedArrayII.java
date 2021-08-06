@@ -11,7 +11,8 @@ public class SearchInRotatedSortedArrayII {
             if (candidates[mid] == target) {
                 return mid;
             }
-            if (candidates[mid] > candidates[right]) {
+            // 左边是顺序
+            if (candidates[left] > candidates[mid]) {
                 if (candidates[left] <= target && target < candidates[mid]) {
                     right = mid - 1;
                 } else {
