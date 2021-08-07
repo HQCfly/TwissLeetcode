@@ -2,17 +2,24 @@ package com.twiss.binarysearch;
 
 public class SearchInRotatedSortedArrayII {
 
-    private static int solved(int[] candidates, int target) {
+    private boolean solved(int[] candidates, int target) {
         int right = candidates.length - 1;
         int left = 0;
         int mid = 0;
         while (left <= right) {
             mid = (left + right) / 2;
             if (candidates[mid] == target) {
-                return mid;
+                return true;
             }
+
+            // 针对 a[l]=a[mid]==a[r]情况  [3,1,2,3,3,3,3]
+            if (candidates[left] == candidates[mid] && candidates[mid] == candidates[right]) {
+                left++;
+                right--;
+            }
+
             // 左边是顺序
-            if (candidates[left] > candidates[mid]) {
+            if (candidates[left] <= candidates[mid]) {
                 if (candidates[left] <= target && target < candidates[mid]) {
                     right = mid - 1;
                 } else {
@@ -26,44 +33,13 @@ public class SearchInRotatedSortedArrayII {
                 }
             }
         }
-        return -1;
-    }
-
-    private static int solved2(int[] candidates, int target) {
-        int n = candidates.length - 1;
-        return search(candidates, 0, n, target);
-    }
-
-    private static int search(int[] candidates, int lo, int hi, int target) {
-        if (lo > hi) {
-            return -1;
-        }
-        int m = lo + (hi - lo) / 2;
-        if (candidates[m] == target) {
-            return m;
-        }
-        if (candidates[lo] <= candidates[m]) {
-            if (candidates[lo] <= target && target < candidates[m]) {
-                return search(candidates, lo, m - 1, target);
-            } else {
-                return search(candidates, m + 1, hi, target);
-            }
-        } else {
-            if (candidates[m] < target && target < candidates[hi]) {
-                return search(candidates, m + 1, hi, target);
-            } else {
-                return search(candidates, lo, m - 1, target);
-            }
-        }
-
+        return false;
     }
 
     public static void main(String[] args) {
-        int[] numbers = {4, 5, 6, 7, 0, 1, 2};
-        int target = 3;
-        int res = solved(numbers, target);
-        System.out.println("res: "+res);
-        int res2 = solved2(numbers, target);
-        System.out.println("res2: "+res2);
+        int[] numbers = {2, 5, 6, 0, 0, 1, 2};
+        int target = 0;
+        boolean res = new SearchInRotatedSortedArrayII().solved(numbers, target);
+        System.out.println("res: " + res);
     }
 }
