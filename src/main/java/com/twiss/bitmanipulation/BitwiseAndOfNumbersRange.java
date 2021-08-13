@@ -30,5 +30,4 @@ public class BitwiseAndOfNumbersRange {
         int res2 = new BitwiseAndOfNumbersRange().getRangeBitwiseAndByBrianKernighan(m,n);
         System.out.println(res2);
     }
-
 }
