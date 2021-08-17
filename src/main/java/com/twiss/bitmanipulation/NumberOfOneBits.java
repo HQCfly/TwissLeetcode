@@ -23,6 +23,19 @@ public class NumberOfOneBits {
     }
 
     /**
+     * 逐步检查bit位数
+     * @param bit
+     * @return
+     */
+    public int hammingWeightByScanBit(int bit){
+        int ans = 0;
+        for (int i=0;i<32;++i){
+            ans+=((bit>>i)&1);
+        }
+        return ans;
+    }
+
+    /**
      * 位运算优化
      * n&(n-1)把n的二进制位中最低位1变0之后的结果
      * @param bits
@@ -44,5 +57,7 @@ public class NumberOfOneBits {
         System.out.println(res);
         int res2 = new NumberOfOneBits().hammingWeightByBrianKernighan(bits);
         System.out.println(res2);
+        int res3 = new NumberOfOneBits().hammingWeightByScanBit(bits);
+        System.out.println(res3);
     }
 }
