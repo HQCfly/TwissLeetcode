@@ -44,8 +44,8 @@ public class BinaryTreeRightSideView {
      *          3
      *         / \
      *        9   20
-     *       /     \
-     *      15      7
+     *          /     \
+     *         15      7
      * @param args
      */
     public static void main(String[] args) {
