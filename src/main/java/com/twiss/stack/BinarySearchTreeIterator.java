@@ -11,15 +11,15 @@ import java.util.Deque;
  */
 public class BinarySearchTreeIterator {
 
-    private Deque<StackTree> deque = new ArrayDeque<>();
+    private Deque<TreeNode> deque = new ArrayDeque<>();
 
-    public BinarySearchTreeIterator(StackTree root){
+    public BinarySearchTreeIterator(TreeNode root){
         dfsLeft(root);
     }
 
     public int next(){
         // 步骤一：取出栈顶元素
-        StackTree root = deque.pollLast();
+        TreeNode root = deque.pollLast();
         // 步骤二：将root值保存下来
         int ans = root.val;
         // 步骤三：将root换成右节点
@@ -34,7 +34,7 @@ public class BinarySearchTreeIterator {
         return deque.isEmpty();
     }
 
-    private void dfsLeft(StackTree root){
+    private void dfsLeft(TreeNode root){
         while (root!=null){
             deque.addLast(root);
             root = root.left;
@@ -50,9 +50,9 @@ public class BinarySearchTreeIterator {
      * @param args
      */
     public static void main(String[] args) {
-        StackTree root = new StackTree(7);
-        StackTree rightNode = new StackTree(15,new StackTree(9),new StackTree(20));
-        root.left = new StackTree(3);
+        TreeNode root = new TreeNode(7);
+        TreeNode rightNode = new TreeNode(15,new TreeNode(9),new TreeNode(20));
+        root.left = new TreeNode(3);
         root.right = rightNode;
 
         BinarySearchTreeIterator res = new BinarySearchTreeIterator(root);

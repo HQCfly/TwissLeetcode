@@ -4,19 +4,19 @@ package com.twiss.stack;
  * @Author: Twiss
  * @Date: 2021/8/31 11:12 上午
  */
-public class StackTree {
+public class TreeNode {
     int val;
-    StackTree left;
-    StackTree right;
+    TreeNode left;
+    TreeNode right;
 
-    StackTree() {
+    TreeNode() {
     }
 
-    StackTree(int val) {
+    TreeNode(int val) {
         this.val = val;
     }
 
-    StackTree(int val, StackTree left, StackTree right) {
+    TreeNode(int val, TreeNode left, TreeNode right) {
         this.val = val;
         this.left = left;
         this.right = right;
