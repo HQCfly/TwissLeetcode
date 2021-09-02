@@ -28,11 +28,6 @@ public class SingleLinkedNodeOperation {
         }
     }
 
-    public void addNodeByIndex(){
-
-    }
-
-
     /**
      * 删除节点
      *
