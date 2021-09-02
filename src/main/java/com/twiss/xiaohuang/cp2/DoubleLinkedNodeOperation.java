@@ -148,5 +148,4 @@ public class DoubleLinkedNodeOperation {
         System.out.print("remove 12: ");
         node.head.print();
     }
-
 }
