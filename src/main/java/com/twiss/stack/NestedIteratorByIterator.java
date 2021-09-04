@@ -39,7 +39,4 @@ public class NestedIteratorByIterator implements Iterator<Integer> {
             }
         }
     }
-
-
-
 }

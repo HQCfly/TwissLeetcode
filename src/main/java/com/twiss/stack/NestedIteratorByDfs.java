@@ -37,5 +37,4 @@ public class NestedIteratorByDfs implements Iterator<Integer> {
         }
     }
 
-
 }
