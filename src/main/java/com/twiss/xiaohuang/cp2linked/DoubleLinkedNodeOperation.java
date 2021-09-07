@@ -1,4 +1,4 @@
-package com.twiss.xiaohuang.cp2;
+package com.twiss.xiaohuang.cp2linked;
 
 /**
  * @Author: Twiss

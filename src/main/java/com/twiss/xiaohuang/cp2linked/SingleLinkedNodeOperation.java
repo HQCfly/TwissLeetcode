@@ -1,4 +1,4 @@
-package com.twiss.xiaohuang.cp2;
+package com.twiss.xiaohuang.cp2linked;
 
 /**
  * 单向链表的增删改查操作
