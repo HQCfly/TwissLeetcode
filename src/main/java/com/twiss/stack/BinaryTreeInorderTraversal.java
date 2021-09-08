@@ -79,5 +79,23 @@ public class BinaryTreeInorderTraversal {
 
         List<Integer> res2 = new BinaryTreeInorderTraversal().getInorderTraversalByBackTracing(root);
         System.out.println("递归写法：" + JSONObject.toJSONString(res2));
+
+        TreeNode root2 = new TreeNode(1);
+        TreeNode rightNode2 = new TreeNode(20);
+        TreeNode leftNode3 = new TreeNode(19);
+        TreeNode leftNode4 = new TreeNode(2);
+        TreeNode rightNode5 = new TreeNode(3);
+        TreeNode rightNode6 = new TreeNode(18);
+        TreeNode leftNode7 = new TreeNode(17);
+        root2.right = rightNode2;
+        rightNode2.left = leftNode3;
+        leftNode3.left = leftNode4;
+        leftNode4.right = rightNode5;
+        rightNode5.right = rightNode6;
+        rightNode6.left = leftNode7;
+        List<Integer> res3 = new BinaryTreeInorderTraversal().getInorderTraversalByBackTracing(root2);
+        System.out.println("递归写法：" + JSONObject.toJSONString(res3));
+
+
     }
 }
