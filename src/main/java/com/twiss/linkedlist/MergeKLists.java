@@ -35,7 +35,6 @@ public class MergeKLists {
         return head.next;
     }
 
-    public static void main(String[] args) {
-
+    public static void main(String[] args
     }
 }
