@@ -1,6 +1,7 @@
-package com.twiss.linkedlist;
+package com.twiss.heaps;
 
 import com.alibaba.fastjson.JSONObject;
+import com.twiss.linkedlist.LinkedNode;
 
 /**
  * @Author: Twiss
