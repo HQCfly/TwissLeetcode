@@ -36,6 +36,22 @@ public class MergeKLists {
         return head.next;
     }
 
+    public LinkedNode mergeKListByMergeSort(LinkedNode[] lists){
+        return merge(lists,0,lists.length-1);
+    }
+
+    public LinkedNode merge(LinkedNode[] lists,int l,int r){
+        if (l==r){
+            return lists[l];
+        }
+        if (l>r){
+            return null;
+        }
+
+        int mid = (l+r)>>1;
+        return mergeTwoLists(merge(lists,l,mid),merge(lists,mid+1,r));
+    }
+
     public static void main(String[] args) {
         // 1,4,5
         LinkedNode node1 = new LinkedNode(1,new LinkedNode(4,new LinkedNode(5)));
@@ -46,8 +62,13 @@ public class MergeKLists {
 
         LinkedNode[] list = {node1,node2,node3};
 
-        LinkedNode res = new MergeKLists().mergeLinkedNode(list);
-        System.out.println(JSONObject.toJSONString(res));
+//        LinkedNode res = new MergeKLists().mergeLinkedNode(list);
+//        System.out.println(JSONObject.toJSONString(res));
+
+
+        LinkedNode[] list2 = {node1,node2,node3};
+        LinkedNode res2 = new MergeKLists().mergeKListByMergeSort(list2);
+        System.out.println(JSONObject.toJSONString(res2));
 
     }
 }
