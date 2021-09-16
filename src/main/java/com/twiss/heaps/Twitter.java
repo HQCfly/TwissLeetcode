@@ -1,6 +1,5 @@
 package com.twiss.heaps;
 
-import scala.Int;
 
 import java.util.*;
 
