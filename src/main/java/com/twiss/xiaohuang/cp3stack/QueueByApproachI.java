@@ -29,10 +29,8 @@ public class QueueByApproachI {
             return;
         }else {
             // insert element at the rear
-            for (int i=front;i>rear;--i){
-                queue[i] = queue[i-1];
-            }
             queue[rear] = data;
+            rear++;
         }
         return;
     }
