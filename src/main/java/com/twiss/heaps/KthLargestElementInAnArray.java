@@ -40,13 +40,28 @@ public class KthLargestElementInAnArray {
         for (int i=left+1;i<=right;i++){
             if (nums[i]<pivot){
                 // j 的初值为 left，先右移，再交换，小于 pivot 的元素都被交换到前面
+                // 此步骤主要是为j做标志位，将j的向右移动最大位置计算出来
                 j++;
+                // 此步骤是为了将假如j是移动最大位置，此时的j与i不一致的情况下，将后续的较小元素移到前面
+                // 此方式能实现比pivot大的元素都在后面
                 swap(nums,j,i);
             }
         }
+        // j是移动的最大位置，将left移动到最大位置处，即实现j左边都是小于pivot的
+        swap(nums,j,left);
+        return j;
+    }
+
+    private void swap(int[] nums, int index1, int index2){
+        int temp = nums[index1];
+        nums[index1] = nums[index2];
+        nums[index2] = temp;
     }
 
     public static void main(String[] args) {
-
+        int[] nums = {3,2,1,5,6,4};
+        int k = 2;
+        int res = new KthLargestElementInAnArray().findKthLargestElement(nums,k);
+        System.out.println(res);
     }
 }
