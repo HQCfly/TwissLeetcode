@@ -42,6 +42,14 @@ public class MeetingRoomsII {
     }
 
     public static void main(String[] args) {
+        Interval interval = new Interval(0,30);
+        Interval interval2 = new Interval(5,10);
+        Interval interval3 = new Interval(15,20);
+
+        Interval[] intervals = {interval,interval2,interval3};
+
+        int res = new MeetingRoomsII().minMeetingRoom(intervals);
+        System.out.println(res);
 
     }
 }
