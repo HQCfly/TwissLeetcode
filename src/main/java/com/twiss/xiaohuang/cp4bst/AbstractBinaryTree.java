@@ -35,6 +35,28 @@ public abstract class AbstractBinaryTree {
     public abstract Boolean delete(int key);
 
     /**
+     * 获取树的层数
+     * @param root
+     * @return
+     */
+    public abstract int getTreeDepth(TreeNode root);
+
+    /**
+     * 将树存入数组中
+     * @param currNode
+     * @param rowIndex
+     * @param columnIndex
+     * @param res
+     * @param treeDepth
+     */
+    public abstract void writeArray(TreeNode currNode, int rowIndex, int columnIndex, String[][] res, int treeDepth);
+
+    /**
+     * 打印树
+     * @param root
+     */
+    public abstract void show(TreeNode root);
+    /**
      * 得到删除节点的中继后节点
      * @param delNode
      * @return
