@@ -317,9 +317,10 @@ public class BinarySearchTree extends AbstractBinaryTree {
         tree2.insert(4,4);
         System.out.println("删除前是递增有序2：");
         tree2.inOrder(tree2.getRootNode());// 中序遍历操作
-        tree2.delete(9);
+        tree2.delete(6);
         System.out.println(JSONObject.toJSONString(tree2));
         tree2.inOrder(tree2.getRootNode());
+        tree2.show(tree2.getRootNode());
 
         BinarySearchTree tree3 = new BinarySearchTree();
         tree3.insert(20,20);
