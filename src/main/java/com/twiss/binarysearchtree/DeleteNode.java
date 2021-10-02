@@ -63,12 +63,22 @@ public class DeleteNode {
         }
         return root.val;
     }
-
+    /**
+     *          5
+     *       /
+     *     3
+     *    / \
+     *   2  4
+     *
+     */
     public static void main(String[] args) {
-        TreeNode left = new TreeNode(3,new TreeNode(2),new TreeNode(4));
-        TreeNode right = new TreeNode(6,null,new TreeNode(7));
-        TreeNode root = new TreeNode(5,left,right);
-        TreeNode newTree = new DeleteNode().getNewTreeAfterDeleteNode(root,3);
-        System.out.println(JSONObject.toJSONString(newTree.left.val));
+        TreeNode threeLeft = new TreeNode(3,null,new TreeNode(4));
+        TreeNode twoRight = new TreeNode(6, threeLeft,new TreeNode(8));
+        TreeNode left = new TreeNode(2,new TreeNode(1),twoRight);
+
+//        TreeNode right = new TreeNode(6,null,new TreeNode(7));
+        TreeNode root = new TreeNode(9,left,null);
+        TreeNode newTree = new DeleteNode().getNewTreeAfterDeleteNode(root,9);
+        System.out.println(JSONObject.toJSONString(newTree.left.right.right.val));
     }
 }
