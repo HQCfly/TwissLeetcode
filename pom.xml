@@ -30,6 +30,13 @@
             <artifactId>kafka_2.10</artifactId>
             <version>0.10.2.1</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/de.congrace/exp4j -->
+        <dependency>
+            <groupId>de.congrace</groupId>
+            <artifactId>exp4j</artifactId>
+            <version>0.3.11</version>
+        </dependency>
+
     </dependencies>
 
 </project>
