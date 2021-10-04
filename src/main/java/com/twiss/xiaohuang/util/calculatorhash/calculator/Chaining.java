@@ -1,6 +1,6 @@
-package com.twiss.xiaohuang.cp5hashtable.calculator;
+package com.twiss.xiaohuang.util.calculatorhash.calculator;
 
-import com.twiss.xiaohuang.cp5hashtable.parameters.Parameters;
+import com.twiss.xiaohuang.util.calculatorhash.parameters.Parameters;
 
 import java.util.*;
 
@@ -13,11 +13,11 @@ public class Chaining extends AbstractCalculator{
 
     @Override
     protected Map<Double,String> getIndexMap(Parameters parameters) throws Exception {
-        Map<Double, List<Integer>> resultHashIndex = new HashMap<>();
+        Map<Double, List<Integer>> resultHashIndex = new LinkedHashMap<>();
         int[] array = parameters.getNums();
         int m = parameters.getM();
         String expression = parameters.getExpression();
-        Map<String,Integer> variables = new HashMap<>();
+        Map<String,Integer> variables = new LinkedHashMap<>();
         // 设置阿尔法值
         variables.put("m",m);
         for (int x : array) {
@@ -36,7 +36,7 @@ public class Chaining extends AbstractCalculator{
     }
 
     private Map<Double,String> convert(Map<Double, List<Integer>> map){
-        Map<Double,String> res = new HashMap<>();
+        Map<Double,String> res = new LinkedHashMap<>();
         for (Double index : map.keySet()){
             List<Integer> lists = map.get(index);
             StringBuilder stringBuilder = new StringBuilder();

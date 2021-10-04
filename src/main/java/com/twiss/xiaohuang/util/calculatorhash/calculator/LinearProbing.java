@@ -1,10 +1,8 @@
-package com.twiss.xiaohuang.cp5hashtable.calculator;
+package com.twiss.xiaohuang.util.calculatorhash.calculator;
 
-import com.twiss.xiaohuang.cp5hashtable.parameters.Parameters;
-import de.congrace.exp4j.Calculable;
-import de.congrace.exp4j.ExpressionBuilder;
+import com.twiss.xiaohuang.util.calculatorhash.parameters.Parameters;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
@@ -16,11 +14,11 @@ public class LinearProbing extends AbstractCalculator {
 
     @Override
     protected Map<Double,String> getIndexMap(Parameters parameters) throws Exception {
-        Map<Double,String> resultHashIndex = new HashMap<>();
+        Map<Double,String> resultHashIndex = new LinkedHashMap<>();
         int[] array = parameters.getNums();
         int m = parameters.getM();
         String expression = parameters.getExpression();
-        Map<String,Integer> variables = new HashMap<>();
+        Map<String,Integer> variables = new LinkedHashMap<>();
         // 设置阿尔法值
         variables.put("m",m);
         for (int x : array) {

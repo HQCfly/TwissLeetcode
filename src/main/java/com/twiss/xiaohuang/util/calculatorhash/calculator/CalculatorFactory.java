@@ -1,8 +1,9 @@
-package com.twiss.xiaohuang.cp5hashtable.calculator;
+package com.twiss.xiaohuang.util.calculatorhash.calculator;
 
-import com.twiss.xiaohuang.cp5hashtable.parameters.Parameters;
+import com.twiss.xiaohuang.util.calculatorhash.parameters.Parameters;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
@@ -13,7 +14,7 @@ import java.util.Map;
 public class CalculatorFactory {
 
     public Map<Double,String> hashTableMap(Integer type, Parameters parameters) throws Exception {
-        Map<Double,String> hashTable = new HashMap<>();
+        Map<Double,String> hashTable = new LinkedHashMap<>();
         if (CalculatorType.LINEAR.equals(type)){
             hashTable = new LinearProbing().getIndexMap(parameters);
         }else if (CalculatorType.QUADRATIC.equals(type)){

@@ -1,6 +1,6 @@
-package com.twiss.xiaohuang.cp5hashtable.calculator;
+package com.twiss.xiaohuang.util.calculatorhash.calculator;
 
-import com.twiss.xiaohuang.cp5hashtable.parameters.Parameters;
+import com.twiss.xiaohuang.util.calculatorhash.parameters.Parameters;
 
 import java.util.Map;
 

@@ -1,4 +1,4 @@
-package com.twiss.xiaohuang.cp5hashtable.calculator;
+package com.twiss.xiaohuang.util.calculatorhash.calculator;
 
 /**
  * @Author: Twiss
