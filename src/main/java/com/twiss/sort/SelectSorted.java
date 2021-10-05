@@ -8,7 +8,7 @@ import com.alibaba.fastjson.JSONObject;
  */
 public class SelectSorted {
 
-    public int[] getSorted(int[] arrays){
+    public int[] getSortedNums(int[] arrays){
         int len = arrays.length;
         for (int i=0;i<len-1;++i){
             int minIndex= i;
@@ -30,7 +30,7 @@ public class SelectSorted {
 
     public static void main(String[] args) {
         int[] nums = {5, 2, 3, 1};
-        int[] sortedArrays = new SelectSorted().getSorted(nums);
+        int[] sortedArrays = new SelectSorted().getSortedNums(nums);
         System.out.println(JSONObject.toJSONString(sortedArrays));
     }
 }
