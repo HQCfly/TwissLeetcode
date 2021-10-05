@@ -3,7 +3,6 @@ package com.twiss.xiaohuang.util.stack;
 import com.alibaba.fastjson.JSONObject;
 import com.twiss.xiaohuang.util.common.CommonUtil;
 
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Stack;

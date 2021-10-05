@@ -6,7 +6,7 @@ import com.alibaba.fastjson.JSONObject;
  * @Author: Twiss
  * @Date: 2021/9/15 1:17 下午
  */
-public class UnsortedArrayConvertMinHeap {
+public class UnsortedArrayConvertMaxHeap {
 
     public void buildMinHeap(int[] array) {
         heapify(array);
@@ -22,10 +22,10 @@ public class UnsortedArrayConvertMinHeap {
         while (index * 2 + 1 < array.length) {
             int son = index * 2 + 1;
             // get less son
-            if (son + 1 < array.length && array[son] > array[son + 1]) {
+            if (son + 1 < array.length && array[son] < array[son + 1]) {
                 son = son + 1;
             }
-            if (array[son] >= array[index]) {
+            if (array[son] <= array[index]) {
                 break;
             }
             int temp = array[son];
@@ -36,8 +36,8 @@ public class UnsortedArrayConvertMinHeap {
     }
 
     public static void main(String[] args) {
-        int[] array = {9, 2, 8, 5, 6, 1, 3};
-        new UnsortedArrayConvertMinHeap().buildMinHeap(array);
+        int[] array = {3, 5, 9, 6, 8, 20, 10, 12, 18, 9};
+        new UnsortedArrayConvertMaxHeap().buildMinHeap(array);
         System.out.println(JSONObject.toJSONString(array));
     }
 }
