@@ -1,18 +1,14 @@
-package com.twiss.xiaohuang.cp4bst;
+package com.twiss.xiaohuang.util.tree;
 
-import com.alibaba.fastjson.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * 二叉搜索树
- *
  * @Author: Twiss
- * @Date: 2021/9/15 3:27 下午
+ * @Date: 2021/10/7 7:18 下午
  */
-public class BinarySearchTree extends AbstractBinaryTree {
-
-    private static final Logger logger = LoggerFactory.getLogger(BinarySearchTree.class);
+public class BuildBinarySearchTree extends AbstractBinaryTree{
+    private static final Logger logger = LoggerFactory.getLogger(BuildBinarySearchTree.class);
 
     private TreeNode rootNode;
 
@@ -287,72 +283,14 @@ public class BinarySearchTree extends AbstractBinaryTree {
         }
     }
 
-    public void buildTree(BinarySearchTree tree, int[] arrays) {
+    public void buildTree(BuildBinarySearchTree tree, int[] arrays) {
         for (int i : arrays) {
             tree.insert(i, i);
         }
     }
 
     public static void main(String[] args) {
-//        BinarySearchTree tree = new BinarySearchTree();
-//        tree.insert(6,6);
-//        tree.insert(3,3);
-//        tree.insert(14,14);
-//        tree.insert(16,16);
-//        tree.insert(10,10);
-//        tree.insert(9,9);
-//        tree.insert(13,13);
-//        tree.insert(11,11);
-//        tree.insert(12,12);
-//        System.out.println("删除前是递增有序");
-//        tree.inOrder(tree.getRootNode());// 中序遍历操作
-//        tree.update(12, 200);
-//        System.out.println("更新节点值中序遍历结果  key=12的值");
-//        tree.inOrder(tree.getRootNode());
-//        System.out.println("删除节点10之后遍历结果");
-//
-//        tree.delete(10);// 删除操作
-//        tree.inOrder(tree.getRootNode());
-//
-//        BinarySearchTree tree2 = new BinarySearchTree();
-//        tree2.insert(9,9);
-//        tree2.insert(2,2);
-//        tree2.insert(1,1);
-//        tree2.insert(6,6);
-//        tree2.insert(3,3);
-//        tree2.insert(8,8);
-//        tree2.insert(4,4);
-//        System.out.println("删除前是递增有序2：");
-//        tree2.inOrder(tree2.getRootNode());// 中序遍历操作
-//        tree2.delete(9);
-//        System.out.println(JSONObject.toJSONString(tree2));
-//        tree2.inOrder(tree2.getRootNode());
-//        tree2.show(tree2.getRootNode());
-//
-//        BinarySearchTree tree3 = new BinarySearchTree();
-//        tree3.insert(20,20);
-//        tree3.insert(1,1);
-//        tree3.insert(10,10);
-//        tree3.insert(19,19);
-//        tree3.insert(16,16);
-//        System.out.println("删除前是递增有序3：");
-//        tree3.inOrder(tree3.getRootNode());// 中序遍历操作
-//        tree3.delete(20);
-//        System.out.println(JSONObject.toJSONString(tree3));
-//        tree3.inOrder(tree3.getRootNode());
-//        tree3.show(tree3.getRootNode());
-//
-//        BinarySearchTree tree4 = new BinarySearchTree();
-//        tree4.insert(7,7);
-//        tree4.insert(2,2);
-//        tree4.insert(1,1);
-//        tree4.insert(8,8);
-//        tree4.insert(3,3);
-//        tree4.insert(6,6);
-//        tree4.insert(9,9);
-//        tree4.show(tree4.getRootNode());
-
-        BinarySearchTree tree6 = new BinarySearchTree();
+        BuildBinarySearchTree tree6 = new BuildBinarySearchTree();
         int[] arrays = {6,7,1,5,8,9,2,4};
         tree6.buildTree(tree6,arrays);
         tree6.show(tree6.getRootNode());

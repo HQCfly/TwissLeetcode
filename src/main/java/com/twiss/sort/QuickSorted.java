@@ -20,6 +20,7 @@ public class QuickSorted {
         if (left < right) {
             // 选出左边小于基准值 右边大于基准值的下标
             int pos = partition(arrays, left, right);
+            System.out.println(JSONObject.toJSONString(arrays));
             quickSort(arrays, left, pos - 1);
             quickSort(arrays, pos + 1, right);
         }
@@ -30,6 +31,7 @@ public class QuickSorted {
         swap(array, left, randomIndex);
         // 基准值
         int pivot = array[left];
+        System.out.println(pivot);
         int lt = left;
         // 将比pivot小的元素都替换到靠前位置
         for (int i = left + 1; i <= right; i++) {
