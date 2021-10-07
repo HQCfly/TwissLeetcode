@@ -7,8 +7,8 @@ import org.slf4j.LoggerFactory;
  * @Author: Twiss
  * @Date: 2021/10/7 7:18 下午
  */
-public class BuildBinarySearchTree extends AbstractBinaryTree{
-    private static final Logger logger = LoggerFactory.getLogger(BuildBinarySearchTree.class);
+public class OperationBinarySearchTree extends AbstractBinaryTree{
+    private static final Logger logger = LoggerFactory.getLogger(OperationBinarySearchTree.class);
 
     private TreeNode rootNode;
 
@@ -283,14 +283,14 @@ public class BuildBinarySearchTree extends AbstractBinaryTree{
         }
     }
 
-    public void buildTree(BuildBinarySearchTree tree, int[] arrays) {
+    public void buildTree(OperationBinarySearchTree tree, int[] arrays) {
         for (int i : arrays) {
             tree.insert(i, i);
         }
     }
 
     public static void main(String[] args) {
-        BuildBinarySearchTree tree6 = new BuildBinarySearchTree();
+        OperationBinarySearchTree tree6 = new OperationBinarySearchTree();
         int[] arrays = {6,7,1,5,8,9,2,4};
         tree6.buildTree(tree6,arrays);
         tree6.show(tree6.getRootNode());
