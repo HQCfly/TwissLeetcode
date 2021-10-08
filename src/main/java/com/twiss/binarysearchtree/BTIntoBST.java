@@ -118,7 +118,11 @@ public class BTIntoBST {
         root.right.left = new Node(6);
         root.right.right = new Node(7);
         BTIntoBST bst = new BTIntoBST();
+        System.out.println("OriginalTree:");
+        bst.show(root);
         bst.convertBTBST(root);
+        System.out.println("BST:");
+        bst.show(root);
     }
 
     private int getTreeDepth(Node root) {
