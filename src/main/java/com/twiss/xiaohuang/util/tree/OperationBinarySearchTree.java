@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
+ * 构建二叉搜索树
  * @Author: Twiss
  * @Date: 2021/10/7 7:18 下午
  */
@@ -23,15 +24,15 @@ public class OperationBinarySearchTree extends AbstractBinaryTree{
     /**
      * 查找指定节点
      *
-     * @param key
+     * @param val
      * @return
      */
     @Override
-    public TreeNode find(int key) {
+    public TreeNode find(int val) {
         TreeNode currentNode = this.rootNode;
-        while (currentNode != null && (currentNode.key != key)) {
+        while (currentNode != null && (currentNode.val != val)) {
             // 遵循左节点小于其父节点
-            if (currentNode.key > key) {
+            if (currentNode.val > val) {
                 currentNode = currentNode.leftChild;
             } else {
                 currentNode = currentNode.rightChild;
@@ -43,34 +44,33 @@ public class OperationBinarySearchTree extends AbstractBinaryTree{
     /**
      * 更新节点值
      *
-     * @param key
-     * @param value
+     * @param val
      * @return
      */
     @Override
-    public Boolean update(int key, int value) {
+    public Boolean update(int val) {
         return null;
     }
 
     /**
      * 插入节点
      *
-     * @param key
+     * @param val
      * @param val
      */
     @Override
-    public void insert(int key, int val) {
+    public void insert(int val) {
         if (this.rootNode == null) {
-            this.rootNode = new TreeNode(key, val);
+            this.rootNode = new TreeNode(val);
             return;
         }
         TreeNode currentNode = this.rootNode;
         TreeNode parentNode = this.rootNode;
         boolean isLeftChild = false;
-        while (currentNode != null && (currentNode.key != key)) {
+        while (currentNode != null && (currentNode.val != val)) {
             parentNode = currentNode;
             // 遵循左节点小于其父节点
-            if (currentNode.key > key) {
+            if (currentNode.val > val) {
                 currentNode = currentNode.leftChild;
                 isLeftChild = true;
             } else {
@@ -80,7 +80,7 @@ public class OperationBinarySearchTree extends AbstractBinaryTree{
         }
         // 插入节点
         if (parentNode != currentNode) {
-            TreeNode newNode = new TreeNode(key, val);
+            TreeNode newNode = new TreeNode(val);
             if (isLeftChild) {
                 parentNode.leftChild = newNode;
             } else {
@@ -94,18 +94,18 @@ public class OperationBinarySearchTree extends AbstractBinaryTree{
     /**
      * 删除节点
      *
-     * @param key
+     * @param val
      * @return
      */
     @Override
-    public Boolean delete(int key) {
+    public Boolean delete(int val) {
         TreeNode currentNode = this.rootNode;
         TreeNode parentNode = this.rootNode;
         Boolean isLeftChild = true;
-        while (currentNode != null && (currentNode.key != key)) {
+        while (currentNode != null && (currentNode.val != val)) {
             parentNode = currentNode;
             // 遵循左节点小于其父节点
-            if (currentNode.key > key) {
+            if (currentNode.val > val) {
                 currentNode = currentNode.leftChild;
                 isLeftChild = true;
             } else {
@@ -143,7 +143,6 @@ public class OperationBinarySearchTree extends AbstractBinaryTree{
             }
         } else {
             TreeNode directNode = this.getDelNodeSuccessor(currentNode);
-            currentNode.key = directNode.key;
             currentNode.val = directNode.val;
         }
         return true;
@@ -174,71 +173,9 @@ public class OperationBinarySearchTree extends AbstractBinaryTree{
     }
 
     @Override
-    public int getTreeDepth(TreeNode root) {
-        return root == null ? 0 : (1 + Math.max(getTreeDepth(root.leftChild), getTreeDepth(root.rightChild)));
-    }
-
-    @Override
-    public void writeArray(TreeNode currNode, int rowIndex, int columnIndex, String[][] res, int treeDepth) {
-        // 保证输入的树不为空
-        if (currNode == null) return;
-        // 先将当前节点保存到二维数组中
-        res[rowIndex][columnIndex] = String.valueOf(currNode.val);
-
-        // 计算当前位于树的第几层
-        int currLevel = ((rowIndex + 1) / 2);
-        // 若到了最后一层，则返回
-        if (currLevel == treeDepth) return;
-        // 计算当前行到下一行，每个元素之间的间隔（下一行的列索引与当前元素的列索引之间的间隔）
-        int gap = treeDepth - currLevel - 1;
-
-        // 对左儿子进行判断，若有左儿子，则记录相应的"/"与左儿子的值
-        if (currNode.leftChild != null) {
-            res[rowIndex + 1][columnIndex - gap] = "/";
-            writeArray(currNode.leftChild, rowIndex + 2, columnIndex - gap * 2, res, treeDepth);
-        }
-
-        // 对右儿子进行判断，若有右儿子，则记录相应的"\"与右儿子的值
-        if (currNode.rightChild != null) {
-            res[rowIndex + 1][columnIndex + gap] = "\\";
-            writeArray(currNode.rightChild, rowIndex + 2, columnIndex + gap * 2, res, treeDepth);
-        }
-    }
-
-    @Override
     public void show(TreeNode root) {
-        if (root == null) System.out.println("EMPTY!");
-        // 得到树的深度
-        int treeDepth = getTreeDepth(root);
-
-        // 最后一行的宽度为2的（n - 1）次方乘3，再加1
-        // 作为整个二维数组的宽度
-        int arrayHeight = treeDepth * 2 - 1;
-        int arrayWidth = (2 << (treeDepth - 2)) * 3 + 1;
-        // 用一个字符串数组来存储每个位置应显示的元素
-        String[][] res = new String[arrayHeight][arrayWidth];
-        // 对数组进行初始化，默认为一个空格
-        for (int i = 0; i < arrayHeight; i++) {
-            for (int j = 0; j < arrayWidth; j++) {
-                res[i][j] = " ";
-            }
-        }
-
-        // 从根节点开始，递归处理整个树
-        // res[0][(arrayWidth + 1)/ 2] = (char)(root.val + '0');
-        writeArray(root, 0, arrayWidth / 2, res, treeDepth);
-
-        // 此时，已经将所有需要显示的元素储存到了二维数组中，将其拼接并打印即可
-        for (String[] line : res) {
-            StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < line.length; i++) {
-                sb.append(line[i]);
-                if (line[i].length() > 1 && i <= line.length - 1) {
-                    i += line[i].length() > 4 ? 2 : line[i].length() - 1;
-                }
-            }
-            System.out.println(sb.toString());
-        }
+        Common common = new Common();
+        common.show(root);
     }
 
     /**
@@ -249,7 +186,7 @@ public class OperationBinarySearchTree extends AbstractBinaryTree{
     @Override
     public void preOrder(TreeNode rootNode) {
         if (rootNode != null) {
-            System.out.println(rootNode.key + " " + rootNode.val);
+            System.out.print(rootNode.val+", ");
             this.preOrder(rootNode.leftChild);
             this.preOrder(rootNode.rightChild);
         }
@@ -264,7 +201,7 @@ public class OperationBinarySearchTree extends AbstractBinaryTree{
     public void inOrder(TreeNode rootNode) {
         if (rootNode != null) {
             this.inOrder(rootNode.leftChild);
-            System.out.println(rootNode.key + " " + rootNode.val);
+            System.out.print(rootNode.val+", ");
             this.inOrder(rootNode.rightChild);
         }
     }
@@ -279,21 +216,31 @@ public class OperationBinarySearchTree extends AbstractBinaryTree{
         if (rootNode != null) {
             this.postOrder(rootNode.leftChild);
             this.postOrder(rootNode.rightChild);
-            System.out.println(rootNode.key + " " + rootNode.val);
+            System.out.print(rootNode.val+"， ");
         }
     }
 
     public void buildTree(OperationBinarySearchTree tree, int[] arrays) {
         for (int i : arrays) {
-            tree.insert(i, i);
+            tree.insert(i);
         }
     }
 
     public static void main(String[] args) {
         OperationBinarySearchTree tree6 = new OperationBinarySearchTree();
-        int[] arrays = {6,7,1,5,8,9,2,4};
+        int[] arrays = {5,7,2,1,8,3,6,9};
         tree6.buildTree(tree6,arrays);
         tree6.show(tree6.getRootNode());
+
+        System.out.print("先序序遍历：");
+        tree6.preOrder(tree6.getRootNode());
+        System.out.println();
+
+        System.out.print("中序遍历：");
+        tree6.inOrder(tree6.getRootNode());
+        System.out.println();
+
+        System.out.print("后序遍历：");
         tree6.postOrder(tree6.getRootNode());
     }
 }

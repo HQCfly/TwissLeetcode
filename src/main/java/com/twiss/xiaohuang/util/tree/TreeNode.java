@@ -5,23 +5,19 @@ package com.twiss.xiaohuang.util.tree;
  * @Date: 2021/9/15 6:58 下午
  */
 public class TreeNode {
-
-    int key;
     int val;
 
     TreeNode leftChild;
     TreeNode rightChild;
 
-    public TreeNode(int key, int val){
-        this.key = key;
+    public TreeNode(int val){
         this.val = val;
         this.leftChild = null;
         this.rightChild = null;
     }
 
-    public TreeNode(int key, int val, TreeNode leftChild, TreeNode rightChild){
+    public TreeNode(int val, TreeNode leftChild, TreeNode rightChild){
         super();
-        this.key = key;
         this.val = val;
         this.leftChild = leftChild;
         this.rightChild = rightChild;
@@ -29,14 +25,6 @@ public class TreeNode {
 
     public TreeNode(){
 
-    }
-
-    public int getKey() {
-        return key;
-    }
-
-    public void setKey(int key) {
-        this.key = key;
     }
 
     public int getVal() {

@@ -8,49 +8,30 @@ package com.twiss.xiaohuang.util.tree;
 public abstract class AbstractBinaryTree {
     /**
      * 查找指定节点
-     * @param key
+     * @param val
      * @return
      */
-    public abstract TreeNode find(int key);
+    public abstract TreeNode find(int val);
 
     /**
      * 更新节点值
-     * @param key
-     * @param value
+     * @param val
      * @return
      */
-    public abstract Boolean update(int key, int value);
+    public abstract Boolean update(int val);
 
     /**
      * 插入节点
-     * @param key
      * @param val
      */
-    public abstract void insert(int key, int val);
+    public abstract void insert(int val);
 
     /**
      * 删除节点
-     * @param key
+     * @param val
      * @return
      */
-    public abstract Boolean delete(int key);
-
-    /**
-     * 获取树的层数
-     * @param root
-     * @return
-     */
-    public abstract int getTreeDepth(TreeNode root);
-
-    /**
-     * 将树存入数组中
-     * @param currNode
-     * @param rowIndex
-     * @param columnIndex
-     * @param res
-     * @param treeDepth
-     */
-    public abstract void writeArray(TreeNode currNode, int rowIndex, int columnIndex, String[][] res, int treeDepth);
+    public abstract Boolean delete(int val);
 
     /**
      * 打印树
