@@ -34,7 +34,7 @@ public class QuadraticProbing extends AbstractCalculator {
                 variables.put("i",i);
                 index = new CalculatorHashValue().calculatorIndex(variables, expression);
             }
-            resultHashIndex.put(index,String.format("%s-%s-%s", x, m, i));
+            resultHashIndex.put(index,String.format("%s", x));
         }
         return resultHashIndex;
     }
