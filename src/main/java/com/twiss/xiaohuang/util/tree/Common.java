@@ -26,7 +26,7 @@ public class Common {
         if (rootNode != null) {
             this.postOrder(rootNode.leftChild);
             this.postOrder(rootNode.rightChild);
-            System.out.println(rootNode.val+", ");
+            System.out.print(rootNode.val+", ");
         }
     }
 

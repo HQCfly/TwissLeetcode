@@ -228,7 +228,7 @@ public class OperationBinarySearchTree extends AbstractBinaryTree{
 
     public static void main(String[] args) {
         OperationBinarySearchTree tree6 = new OperationBinarySearchTree();
-        int[] arrays = {5,7,2,1,8,3,6,9};
+        int[] arrays = {6,7,1,5,8,9,2,4};
         tree6.buildTree(tree6,arrays);
         tree6.show(tree6.getRootNode());
 

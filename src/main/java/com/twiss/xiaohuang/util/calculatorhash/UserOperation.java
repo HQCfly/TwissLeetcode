@@ -26,8 +26,8 @@ public class UserOperation {
         System.out.println(commonUtil.jsonFormat(res));
 
         // Linear
-        int[] arrays2 = {12,9,18,3,14,21,4};
-        int alpha2 = 9;
+        int[] arrays2 = {14,72,16,94};
+        int alpha2 = 7;
         Integer type2 = 1;
         String expression2 = "x % m";
         Parameters parameters2 = new Parameters(arrays2,alpha2,expression2);

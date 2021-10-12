@@ -11,6 +11,8 @@ import java.util.Arrays;
  */
 public class ConstructTreeByTraversal {
 
+    private Common common = new Common();
+
     /**
      * 1. 根据中序遍历和后序遍历确定二叉树
      * @param inorder
@@ -125,8 +127,19 @@ public class ConstructTreeByTraversal {
     }
 
     public void show(TreeNode root){
-        Common common = new Common();
         common.show(root);
+    }
+
+    public void preOrderSe(TreeNode root){
+        common.preOrder(root);
+    }
+
+    public void inOrderSe(TreeNode root){
+        common.inOrder(root);
+    }
+
+    public void postOrderSe(TreeNode root){
+        common.postOrder(root);
     }
 
     public static void main(String[] args) {
@@ -137,6 +150,9 @@ public class ConstructTreeByTraversal {
         ConstructTreeByTraversal cbt1 = new ConstructTreeByTraversal();
         TreeNode root = cbt1.constructFromInorderPost(pre1,post1);
         cbt1.show(root);
+        System.out.print("前序遍历：");
+        cbt1.preOrderSe(root);
+        System.out.println();
 
         // 2. 根据前序序遍历和后序遍历确定二叉树
         System.out.println("2. 根据前序序遍历和后序遍历确定二叉树: ");
@@ -144,6 +160,9 @@ public class ConstructTreeByTraversal {
         ConstructTreeByTraversal cbt2 = new ConstructTreeByTraversal();
         TreeNode root2 = cbt2.constructFromPrePost(pre2,post2);
         cbt2.show(root2);
+        System.out.print("中序遍历：");
+        cbt1.inOrderSe(root);
+        System.out.println();
 
         // 3. 根据前序遍历和中序遍历确定二叉树
         System.out.println("3. 根据前序遍历和中序遍历确定二叉树: ");
@@ -151,5 +170,8 @@ public class ConstructTreeByTraversal {
         ConstructTreeByTraversal cbt3 = new ConstructTreeByTraversal();
         TreeNode root3 = cbt3.constructFromPreInorder(pre3,post3);
         cbt3.show(root3);
+        System.out.print("后序遍历：");
+        cbt1.postOrderSe(root);
+        System.out.println();
     }
 }

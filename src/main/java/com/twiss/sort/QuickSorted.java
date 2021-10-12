@@ -2,6 +2,7 @@ package com.twiss.sort;
 
 import com.alibaba.fastjson.JSONObject;
 
+import java.util.Collections;
 import java.util.Random;
 
 /**
@@ -27,22 +28,30 @@ public class QuickSorted {
     }
 
     private int partition(int[] array, int left, int right) {
-        int randomIndex = new Random().nextInt(right - left + 1) + 1;
-        swap(array, left, randomIndex);
+        int randomIndex = left+new Random().nextInt(right - left + 1);
+        System.out.println("randomIndex:"+randomIndex);
+        swap(array, right, randomIndex);
         // 基准值
-        int pivot = array[left];
-        System.out.println(pivot);
-        int lt = left;
+        int pivot = array[right];
+        System.out.println("pivot:"+pivot);
+        int i = left, j=right;
+//        int lt = left;
         // 将比pivot小的元素都替换到靠前位置
-        for (int i = left + 1; i <= right; i++) {
-            if (array[i] < pivot) {
-                lt++;
-                swap(array, i, lt);
+        while (i<j){
+            if (array[i++]>pivot){
+                swap(array,--i,--j);
             }
         }
+//        for (int i = left + 1; i <= right; i++) {
+//            if (array[i] < pivot) {
+//                lt++;
+//                swap(array, i, lt);
+//            }
+//        }
         // 将前面lt个元素的最后一个元素与left替换，因为left是前lt元素最大
-        swap(array, left, lt);
-        return lt;
+//        swap(array,i,lt);
+        swap(array, i,right);
+        return i;
     }
 
     private void swap(int[] nums, int index1, int index2) {
