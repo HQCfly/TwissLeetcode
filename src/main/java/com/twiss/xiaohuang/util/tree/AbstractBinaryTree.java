@@ -28,10 +28,10 @@ public abstract class AbstractBinaryTree {
 
     /**
      * 删除节点
-     * @param val
+     * @param key
      * @return
      */
-    public abstract Boolean delete(int val);
+    public abstract TreeNode delete(TreeNode root, int key);
 
     /**
      * 打印树

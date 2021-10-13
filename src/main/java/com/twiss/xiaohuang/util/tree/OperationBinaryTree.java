@@ -100,17 +100,33 @@ public class OperationBinaryTree {
          *         7   5   2
          */
         OperationBinaryTree bt = new OperationBinaryTree();
-        Integer[] array = {4, 8, 3, 9, 6, null, 1, null, null, 7, 5, 2, null};
+        Integer[] array = {4, 8, 3, 9, 6, null, 1, null,null, 7, 5, 2,null};
         bt.addByLeve(array);
+        bt.show(bt.getRoot());
+        System.out.println();
+        System.out.println("bt1先序遍历PreOrder: ");
         bt.preOrder(bt.getRoot());
         System.out.println();
-        bt.show(bt.getRoot());
+        System.out.println("bt1中序遍历InOrder: ");
+        bt.inOrder(bt.getRoot());
+        System.out.println();
+        System.out.println("bt1后序遍历PostOrder: ");
+        bt.postOrder(bt.getRoot());
+
+
 
         OperationBinaryTree bt2 = new OperationBinaryTree();
         Integer[] array2 = {9, 8, 7, 6, 5, 4,3,2, 1, 0, null};
         bt2.addByLeve(array2);
+        bt2.show(bt2.getRoot());
+        System.out.println();
+        System.out.println("bt2先序遍历PreOrder: ");
+        bt2.preOrder(bt2.getRoot());
+        System.out.println();
+        System.out.println("bt2中序遍历InOrder: ");
         bt2.inOrder(bt2.getRoot());
         System.out.println();
-        bt2.show(bt2.getRoot());
+        System.out.println("bt2后序遍历PostOrder: ");
+        bt2.postOrder(bt2.getRoot());
     }
 }

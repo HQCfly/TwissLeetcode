@@ -94,58 +94,48 @@ public class OperationBinarySearchTree extends AbstractBinaryTree{
     /**
      * 删除节点
      *
-     * @param val
+     * @param key
      * @return
      */
     @Override
-    public Boolean delete(int val) {
-        TreeNode currentNode = this.rootNode;
-        TreeNode parentNode = this.rootNode;
-        Boolean isLeftChild = true;
-        while (currentNode != null && (currentNode.val != val)) {
-            parentNode = currentNode;
-            // 遵循左节点小于其父节点
-            if (currentNode.val > val) {
-                currentNode = currentNode.leftChild;
-                isLeftChild = true;
-            } else {
-                currentNode = currentNode.rightChild;
-                isLeftChild = false;
+    public TreeNode delete(TreeNode root,int key) {
+        if (root == null) return null;
+
+        // delete from the right subtree
+        if (key > root.val) root.rightChild = delete(root.rightChild, key);
+            // delete from the left subtree
+        else if (key < root.val) root.leftChild = delete(root.leftChild, key);
+            // delete the current node
+        else {
+            // the node is a leaf
+            if (root.leftChild == null && root.rightChild == null) root = null;
+                // the node is not a leaf and has a right child
+            else if (root.rightChild != null) {
+                root.val = successor(root);
+                root.rightChild = delete(root.rightChild, root.val);
+            }
+            // the node is not a leaf, has no right child, and has a left child
+            else {
+                root.val = predecessor(root);
+                root.leftChild = delete(root.leftChild, root.val);
             }
         }
-        if (currentNode == null) {
-            return false;
-        }
-        // 要删除的节点为叶子节点
-        if ((currentNode.leftChild == null) && (currentNode.rightChild) == null) {
-            if (currentNode == this.rootNode) {
-                this.rootNode = null;
-            } else if (isLeftChild) {
-                currentNode.leftChild = null;
-            } else {
-                currentNode.rightChild = null;
-            }
-        } else if ((currentNode.rightChild == null) && (currentNode.leftChild != null)) {
-            if (currentNode == this.rootNode) {
-                this.rootNode = currentNode.leftChild;
-            } else if (isLeftChild) {
-                parentNode.leftChild = currentNode.leftChild;
-            } else {
-                parentNode.rightChild = currentNode.leftChild;
-            }
-        } else if ((currentNode.rightChild != null) && (currentNode.leftChild == null)) {
-            if (currentNode == this.rootNode) {
-                this.rootNode = currentNode.rightChild;
-            } else if (isLeftChild) {
-                parentNode.leftChild = currentNode.rightChild;
-            } else {
-                parentNode.leftChild = currentNode.rightChild;
-            }
-        } else {
-            TreeNode directNode = this.getDelNodeSuccessor(currentNode);
-            currentNode.val = directNode.val;
-        }
-        return true;
+        return root;
+    }
+
+    public int successor(TreeNode root) {
+        root = root.rightChild;
+        while (root.leftChild != null) root = root.leftChild;
+        return root.val;
+    }
+
+    /*
+    One step left and then always right
+    */
+    public int predecessor(TreeNode root) {
+        root = root.leftChild;
+        while (root.rightChild != null) root = root.rightChild;
+        return root.val;
     }
 
     /**
@@ -228,7 +218,7 @@ public class OperationBinarySearchTree extends AbstractBinaryTree{
 
     public static void main(String[] args) {
         OperationBinarySearchTree tree6 = new OperationBinarySearchTree();
-        int[] arrays = {6,7,1,5,8,9,2,4};
+        int[] arrays = {5,2,6,4,9,7,3,1};
         tree6.buildTree(tree6,arrays);
         tree6.show(tree6.getRootNode());
 
@@ -242,5 +232,6 @@ public class OperationBinarySearchTree extends AbstractBinaryTree{
 
         System.out.print("后序遍历：");
         tree6.postOrder(tree6.getRootNode());
+
     }
 }
