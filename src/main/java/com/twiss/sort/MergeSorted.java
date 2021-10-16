@@ -50,7 +50,7 @@ public class MergeSorted {
     }
 
     public static void main(String[] args) {
-        int[] nums = {5, 2, 3, 1};
+        int[] nums = {12, 44, 13, 88, 23, 94, 11, 39, 20, 16};
         int[] sortedArrays = new MergeSorted().getSortedNums(nums);
         System.out.println(JSONObject.toJSONString(sortedArrays));
     }
