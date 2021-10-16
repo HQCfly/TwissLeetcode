@@ -2,7 +2,6 @@ package com.twiss.sort;
 
 import com.alibaba.fastjson.JSONObject;
 
-import java.util.Collections;
 import java.util.Random;
 
 /**
