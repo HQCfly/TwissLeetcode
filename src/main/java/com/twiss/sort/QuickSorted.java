@@ -20,7 +20,7 @@ public class QuickSorted {
         if (left < right) {
             // 选出左边小于基准值 右边大于基准值的下标
             int pos = partition(arrays, left, right);
-            System.out.println("post: "+pos);
+            System.out.println("post: " + pos);
             System.out.println(JSONObject.toJSONString(arrays));
             quickSort(arrays, left, pos - 1);
             quickSort(arrays, pos + 1, right);
@@ -45,19 +45,19 @@ public class QuickSorted {
 //        swap(array, i,right);
         // 基准值
         int pivot = array[right];
-        System.out.println("pivot:"+pivot);
+        System.out.println("pivot:" + pivot);
 
-        int i = left-1;
-        for (int j = left ; j <= right-1; j++) {
+        int i = left - 1;
+        for (int j = left; j <= right - 1; j++) {
             if (array[j] <= pivot) {
                 i++;
                 swap(array, i, j);
             }
         }
         // 将前面lt个元素的最后一个元素与left替换，因为left是前lt元素最大
-        swap(array,i+1,right);
+        swap(array, i + 1, right);
 
-        return i+1;
+        return i + 1;
     }
 
     private void swap(int[] nums, int index1, int index2) {
