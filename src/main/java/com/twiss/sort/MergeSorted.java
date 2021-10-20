@@ -9,6 +9,7 @@ import com.alibaba.fastjson.JSONObject;
 public class MergeSorted {
 
     private int[] temp;
+    private int count=0;
 
     public int[] getSortedNums(int[] arrays) {
         temp = new int[arrays.length];
@@ -47,6 +48,8 @@ public class MergeSorted {
         for (int k = 0; k < right - left + 1; ++k) {
             arrays[k + left] = temp[k];
         }
+        count++;
+        System.out.println("第"+count+"合并: "+JSONObject.toJSONString(arrays));
     }
 
     public static void main(String[] args) {

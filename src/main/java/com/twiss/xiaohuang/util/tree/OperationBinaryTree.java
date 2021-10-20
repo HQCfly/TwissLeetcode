@@ -112,7 +112,7 @@ public class OperationBinaryTree {
         System.out.println();
         System.out.println("bt1后序遍历PostOrder: ");
         bt.postOrder(bt.getRoot());
-
+        System.out.println();
 
 
         OperationBinaryTree bt2 = new OperationBinaryTree();
