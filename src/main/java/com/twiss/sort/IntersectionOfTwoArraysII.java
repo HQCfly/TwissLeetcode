@@ -7,6 +7,6 @@ package com.twiss.sort;
 public class IntersectionOfTwoArraysII {
 
     public static void main(String[] args) {
-
+        int[]
     }
 }
