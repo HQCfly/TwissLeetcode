@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 import java.util.Arrays;
 
 /**
+ * 保证数组唯一
  * @Author: Twiss
  * @Date: 2021/10/23 10:40 下午
  */
