@@ -7,6 +7,6 @@ package com.twiss.sort;
 public class MaximumGap {
 
     public static void main(String[] args) {
-
+        int[] numbers = {};
     }
 }
