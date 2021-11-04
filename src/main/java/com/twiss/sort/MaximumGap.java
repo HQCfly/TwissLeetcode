@@ -59,4 +59,5 @@ public class MaximumGap {
         int res = new MaximumGap().getMaximumGap(numbers);
         System.out.println(res);
     }
+
 }
