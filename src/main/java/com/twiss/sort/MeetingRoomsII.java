@@ -7,6 +7,6 @@ package com.twiss.sort;
 public class MeetingRoomsII {
 
     public static void main(String[] args) {
-
+        int[] nums = {};
     }
 }
