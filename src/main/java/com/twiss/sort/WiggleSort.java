@@ -6,6 +6,6 @@ package com.twiss.sort;
  */
 public class WiggleSort {
     public static void main(String[] args) {
-
+        int[] numbers = {1, 5, 1, 1, 6, 4};
     }
 }
