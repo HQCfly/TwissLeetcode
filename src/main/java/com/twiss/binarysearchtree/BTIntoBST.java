@@ -1,6 +1,10 @@
 package com.twiss.binarysearchtree;
 
+import com.twiss.xiaohuang.util.tree.TreeNode;
+
 import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.Queue;
 
 /**
  * @Author: Twiss
@@ -18,6 +22,30 @@ public class BTIntoBST {
             this.val = val;
             this.left = null;
             this.right = null;
+        }
+
+        public int getVal() {
+            return val;
+        }
+
+        public void setVal(int val) {
+            this.val = val;
+        }
+
+        public Node getLeft() {
+            return left;
+        }
+
+        public void setLeft(Node left) {
+            this.left = left;
+        }
+
+        public Node getRight() {
+            return right;
+        }
+
+        public void setRight(Node right) {
+            this.right = right;
         }
     }
 
@@ -91,6 +119,57 @@ public class BTIntoBST {
         return height;
     }
 
+    public static void addByLeve(Integer[] arrays) {
+        int i = 1;
+        root = new Node(arrays[0]);  // 根节点
+        Node current = null;
+        Integer value = null;
+
+        LinkedList<Node> queue = new LinkedList<Node>();
+        queue.offer(root);
+        while (i < arrays.length) {
+            current = queue.poll();//从链表中移除并获取第一个节点
+            value = arrays[i++];
+            if (value != null) {
+                Node left = new Node(value);
+                current.setLeft(left);//创建当前节点的左孩子
+                queue.offer(left); // 在链表尾部 左孩子入队
+            }
+            value = arrays[i++];
+            if (value != null) {
+                Node right = new Node(value);
+                current.setRight(right);//创建当前节点的右孩子
+                queue.offer(right);// 在链表尾部 右孩子入队
+            }
+
+        }
+        levelIetrator(root);
+    }
+
+    private static int levelIetrator(Node root) {
+        if (root == null) {
+            return -1;
+        }
+        Queue<Node> queue = new LinkedList<Node>();
+        Node current = null;
+        queue.offer(root);
+        while (!queue.isEmpty()) {
+            current = queue.poll();
+            if (current.getLeft() != null) {
+                queue.offer(current.getLeft());
+//                System.out.println("节点" + current.val + "的左孩子是" + current.getLeft().val);
+            }  //                System.out.println("节点" + current.val + "没有左孩子");
+
+            if (current.getRight() != null) {
+                queue.offer(current.getRight());
+//                System.out.println("节点" + current.val + "的右孩子是" + current.getRight().val);
+            }  //                System.out.println("节点" + current.val + "没有右孩子");
+
+        }
+        return 1;
+
+    }
+
     /**
      * original tree
      *		  1
@@ -110,14 +189,17 @@ public class BTIntoBST {
      */
     public static void main(String[] arg) {
         // build tree
-        root = new Node(1);
-        root.left = new Node(2);
-        root.right = new Node(3);
-        root.left.left = new Node(4);
-        root.left.right = new Node(5);
-        root.right.left = new Node(6);
-        root.right.right = new Node(7);
+//        root = new Node(1);
+//        root.left = new Node(2);
+//        root.right = new Node(3);
+//        root.left.left = new Node(4);
+//        root.left.right = new Node(5);
+//        root.right.left = new Node(6);
+//        root.right.right = new Node(7);
+        Integer[] array2 = {1, 2, 3, 4, 5, 6, 7};
+
         BTIntoBST bst = new BTIntoBST();
+        bst.addByLeve(array2);
         System.out.println("OriginalTree:");
         bst.show(root);
         bst.convertBTBST(root);

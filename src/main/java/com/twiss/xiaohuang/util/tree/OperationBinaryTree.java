@@ -6,6 +6,7 @@ import java.util.Queue;
 
 /**
  * 按照层序添加数组形成树，求其遍历顺序
+ *
  * @Author: Twiss
  * @Date: 2021/10/7 10:27 下午
  */
@@ -84,7 +85,7 @@ public class OperationBinaryTree {
 
     }
 
-    public void show(TreeNode root){
+    public void show(TreeNode root) {
         Common common = new Common();
         common.show(root);
     }
@@ -100,7 +101,8 @@ public class OperationBinaryTree {
          *         7   5   2
          */
         OperationBinaryTree bt = new OperationBinaryTree();
-        Integer[] array = {4, 8, 3, 9, 6, null, 1, null,null, 7, 5, 2,null};
+//        Integer[] array = {4, 8, 3, 9, 6, null, 1, null,null, 7, 5, 2,null};
+        Integer[] array = {8, 3, 10, 1, 6, null, 14,null, null, 4, 7, 13,null};
         bt.addByLeve(array);
         bt.show(bt.getRoot());
         System.out.println();
@@ -116,7 +118,7 @@ public class OperationBinaryTree {
 
 
         OperationBinaryTree bt2 = new OperationBinaryTree();
-        Integer[] array2 = {9, 8, 7, 6, 5, 4,3,2, 1, 0, null};
+        Integer[] array2 = {9, 8, 7, 6, 5, 4, 3, 2, 1, 0, null};
         bt2.addByLeve(array2);
         bt2.show(bt2.getRoot());
         System.out.println();

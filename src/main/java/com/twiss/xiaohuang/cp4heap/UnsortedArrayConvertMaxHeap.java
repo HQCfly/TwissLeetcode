@@ -6,6 +6,7 @@ import com.twiss.xiaohuang.util.tree.OperationBinaryTree;
 /**
  * @Author: Twiss
  * @Date: 2021/9/15 1:17 下午
+ * O(n)
  */
 public class UnsortedArrayConvertMaxHeap {
 
