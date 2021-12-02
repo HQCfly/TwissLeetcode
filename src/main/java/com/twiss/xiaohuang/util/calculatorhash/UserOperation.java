@@ -16,8 +16,8 @@ public class UserOperation {
     public static void main(String[] args) throws Exception {
         CommonUtil commonUtil = new CommonUtil();
         // Quadratic
-        int[] arrays = {12, 44, 13, 88, 23, 94, 11, 39, 20};
-        int alpha = 11;
+        int[] arrays = {88,  97,  39,  158};
+        int alpha = 7;
         String expression = "((x % m) +i + i^2) % m";
         Integer type = 2;
         Parameters parameters = new Parameters(arrays,alpha,expression);
@@ -27,8 +27,8 @@ public class UserOperation {
 
         // Linear
 //        int[] arrays2 = {9,12,14,3,4,21,18};
-        int[] arrays2 = {9,12,14,3,4,21,18};
-        int alpha2 = 9;
+        int[] arrays2 = {91, 123, 13, 62};
+        int alpha2 = 7;
         Integer type2 = 1;
         String expression2 = "x % m";
         Parameters parameters2 = new Parameters(arrays2,alpha2,expression2);

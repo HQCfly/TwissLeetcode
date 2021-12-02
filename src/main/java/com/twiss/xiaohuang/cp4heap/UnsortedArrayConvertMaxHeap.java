@@ -73,6 +73,7 @@ public class UnsortedArrayConvertMaxHeap {
 
     public static void main(String[] args) {
         Integer[] array = {3, 5, 9, 6, 8, 20, 10, 12, 18, 9};
+
         UnsortedArrayConvertMaxHeap maxHeap = new UnsortedArrayConvertMaxHeap();
         maxHeap.buildMaxHeap(array);
         System.out.println("最大堆化后的数组："+JSONObject.toJSONString(array));

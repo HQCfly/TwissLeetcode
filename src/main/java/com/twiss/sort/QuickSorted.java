@@ -67,8 +67,7 @@ public class QuickSorted {
     }
 
     public static void main(String[] args) {
-        int[] nums = {12, 44, 13, 88, 23, 94, 11, 39, 20, 16};
-
+        int[] nums = {23, 19, 15, 7, 21, 6, 18};
         int[] sortedArrays = new QuickSorted().getSortedNums(nums);
         System.out.println(JSONObject.toJSONString(sortedArrays));
     }

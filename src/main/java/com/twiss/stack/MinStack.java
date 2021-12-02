@@ -40,6 +40,7 @@ public class MinStack {
         minStack.push(0);
         minStack.push(-3);
         System.out.println("originStack: "+minStack.stackElement);
+
         int minElement = minStack.getMin();
         System.out.println("minElement: "+minElement);
         minStack.pop();

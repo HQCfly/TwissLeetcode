@@ -40,14 +40,13 @@ public class ValidStack {
     public static void main(String[] args){
         CommonUtil commonUtil = new CommonUtil();
         Map<String,Boolean> res = new LinkedHashMap<>();
-        int[] pushA = new int[]{0,1,2,3,4,5,6,7,8,9};
+        int[] pushA = new int[]{1,2,3,4,5,6,7,8,9,10};
         int[][] popStacks = new int[][]{
-                {1,4,3,2,6,7,8,5,9,0},
-                {0,6,5,4,3,7,9,8,2,1},
-                {1,2,4,3,5,6,9,8,0,7},
-                {6,5,7,4,9,8,3,2,1,0},
-                {7,6,5,4,8,9,3,1,2,0},
-                {3,5,4,2,1,0,6,9,7,8}
+                {4,3,5,2,1,6,10,9,7,8},
+                {5,4,6,7,3,2,8,10,1,9},
+                {3,2,4,7,9,6,5,10,9,1},
+                {3,6,5,7,4,10,9,8,2,1},
+                {1,6,5,7,4,3,9,8,10,2}
         };
         for (int[] popStack:popStacks){
             Boolean isValid = IsPopOrder(pushA, popStack);

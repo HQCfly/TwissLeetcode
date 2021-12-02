@@ -73,7 +73,7 @@ public class UnsortedArrayConvertMinHeap {
 
     public static void main(String[] args) {
 //        Integer[] array = { 2, 9, 5, 10, 11, 7, 8,6};
-        Integer[] array = { 3, 4, 6, 9, 7,2};
+        Integer[] array = { 2, 3, 6, 10, 7, 8, 9, 11, 12, 13, 14, 15,4};
         UnsortedArrayConvertMinHeap minHeap = new UnsortedArrayConvertMinHeap();
         minHeap.buildMinHeap(array);
         System.out.println("最小堆化后的数组："+JSONObject.toJSONString(array));

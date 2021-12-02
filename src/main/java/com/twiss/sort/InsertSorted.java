@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 /**
  * @Author: Twiss
  * @Date: 2021/10/5 7:55 下午
+ * 时间复杂度O(n)
  */
 public class InsertSorted {
 
@@ -24,6 +25,7 @@ public class InsertSorted {
 
     public static void main(String[] args) {
         int[] nums = {5, 2, 3, 1};
+
         int[] sortedArrays = new InsertSorted().getSortedNums(nums);
         System.out.println(JSONObject.toJSONString(sortedArrays));
     }

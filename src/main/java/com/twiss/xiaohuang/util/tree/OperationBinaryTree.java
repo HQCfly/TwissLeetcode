@@ -102,7 +102,8 @@ public class OperationBinaryTree {
          */
         OperationBinaryTree bt = new OperationBinaryTree();
 //        Integer[] array = {4, 8, 3, 9, 6, null, 1, null,null, 7, 5, 2,null};
-        Integer[] array = {8, 3, 10, 1, 6, null, 14,null, null, 4, 7, 13,null};
+
+        Integer[] array = {1, 4, 5, 6, 2, null, 3};
         bt.addByLeve(array);
         bt.show(bt.getRoot());
         System.out.println();
