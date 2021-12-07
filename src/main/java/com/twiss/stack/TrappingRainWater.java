@@ -7,7 +7,9 @@ package com.twiss.stack;
 public class TrappingRainWater {
     
     private int getTrappingRainWater(){
+        int ans = 0;
 
+        return ans;
     }
 
     public static void main(String[] args) {
