@@ -5,8 +5,8 @@ package com.twiss.stack;
  * @Date: 2021/12/1 11:27 下午
  */
 public class TrappingRainWater {
-    
-    private int getTrappingRainWater(int[] height){
+
+    private int getTrappingRainWater(int[] height) {
         int n = height.length;
         if (n == 0) {
             return 0;
@@ -32,7 +32,7 @@ public class TrappingRainWater {
     }
 
     public static void main(String[] args) {
-        int[] height = {0,1,0,2,1,0,1,3,2,1,2,1};
+        int[] height = {0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1};
         int ans = new TrappingRainWater().getTrappingRainWater(height);
         System.out.println(ans);
     }
