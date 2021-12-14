@@ -1,5 +1,8 @@
 package com.twiss.stack;
 
+import java.util.Deque;
+import java.util.LinkedList;
+
 /**
  * @Author: Twiss
  * @Date: 2021/12/1 11:27 下午
@@ -31,9 +34,32 @@ public class TrappingRainWater {
         return ans;
     }
 
+    private int getTrapBySingleStack(int[] height){
+        int ans = 0;
+        Deque<Integer> deque = new LinkedList<Integer>();
+        int n = height.length;
+        for (int i=0;i<n;++i){
+            while (!deque.isEmpty()&&height[i]>height[deque.peek()]){
+                int top = deque.pop();
+                if (deque.isEmpty()){
+                    break;
+                }
+                int left = deque.peek();
+                int currentWidth = i-left-1;
+                int currentHeight = Math.min(height[left],height[i]-height[top]);
+                ans += currentHeight*currentWidth;
+            }
+            deque.push(i);
+        }
+        return ans;
+    }
+
     public static void main(String[] args) {
         int[] height = {0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1};
         int ans = new TrappingRainWater().getTrappingRainWater(height);
         System.out.println(ans);
+        int[] height2 = {0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1};
+        int ans2 = new TrappingRainWater().getTrappingRainWater(height2);
+        System.out.println(ans2);
     }
 }
