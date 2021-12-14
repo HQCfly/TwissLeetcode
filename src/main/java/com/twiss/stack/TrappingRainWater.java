@@ -46,7 +46,7 @@ public class TrappingRainWater {
                 }
                 int left = deque.peek();
                 int currentWidth = i-left-1;
-                int currentHeight = Math.min(height[left],height[i]-height[top]);
+                int currentHeight = Math.min(height[left],height[i])-height[top];
                 ans += currentHeight*currentWidth;
             }
             deque.push(i);
@@ -59,7 +59,7 @@ public class TrappingRainWater {
         int ans = new TrappingRainWater().getTrappingRainWater(height);
         System.out.println(ans);
         int[] height2 = {0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1};
-        int ans2 = new TrappingRainWater().getTrappingRainWater(height2);
+        int ans2 = new TrappingRainWater().getTrapBySingleStack(height2);
         System.out.println(ans2);
     }
 }
