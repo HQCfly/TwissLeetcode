@@ -77,4 +77,5 @@ public class KthLargest {
         int res2 = new KthLargest().getKthLargestByQuickSorted(nums2,k2);
         System.out.println(res2);
     }
+
 }
