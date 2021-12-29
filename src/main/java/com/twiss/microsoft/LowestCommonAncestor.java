@@ -6,6 +6,11 @@ package com.twiss.microsoft;
  */
 public class LowestCommonAncestor {
 
+    public int getLowerCommonAncestor(){
+
+        return 0;
+    }
+
     public static void main(String[] args) {
 
     }
