@@ -25,16 +25,28 @@ public class Calculator {
                 i++;
             }else if (s.charAt(i)=='-'){
                 sign = -ops.peek();
+                i++;
             }else if (s.charAt(i)=='('){
                 ops.push(sign);
+                i++;
             }else if (s.charAt(i)==')'){
                 ops.pop();
-                i--;
+                i++;
+            }else {
+                int nums = 0;
+                while (i<n&&Character.isDigit(s.charAt(i))){
+                    nums = nums*10+s.charAt(i)-'0';
+                    i++;
+                }
+                ret += sign*nums;
             }
         }
+        return ret;
     }
 
     public static void main(String[] args) {
-
+        String s = "(1+(4+5+2)-3)+(6+8)";
+        int res = new Calculator().getResult(s);
+        System.out.println(res);
     }
 }
