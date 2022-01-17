@@ -8,20 +8,20 @@ public class DiameterOfBinaryTree {
 
     private int ans;
 
-    public int getDiameter(TreeNode root){
+    public int getDiameter(TreeNode root) {
         ans = 1;
         depth(root);
-        return ans-1;
+        return ans - 1;
     }
 
-    private int depth(TreeNode node){
-        if (node==null){
+    private int depth(TreeNode node) {
+        if (node == null) {
             return 0;
         }
         int left = depth(node.left);
         int right = depth(node.right);
-        ans = Math.max(ans,left+right+1);
-        return Math.max(left,right)+1;
+        ans = Math.max(ans, left + right + 1);
+        return Math.max(left, right) + 1;
     }
 
     public static void main(String[] args) {
