@@ -5,7 +5,7 @@ package com.twiss.microsoft;
  * @Author: Twiss
  * @Date: 2022/2/3 3:14 下午
  */
-public class RotateSearch {
+public class RotateArraySearch {
 
     public static void main(String[] args) {
 
