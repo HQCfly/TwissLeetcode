@@ -63,6 +63,7 @@ public class MedianOfTwoSortedArrays {
         }
     }
 
+
     public static void main(String[] args) {
         int[] nums1 = {1,2};
         int[] nums2 = {3,4};
