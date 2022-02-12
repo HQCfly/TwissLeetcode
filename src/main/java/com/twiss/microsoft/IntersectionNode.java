@@ -1,5 +1,7 @@
 package com.twiss.microsoft;
 
+import com.alibaba.fastjson.JSONObject;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -22,18 +24,18 @@ public class IntersectionNode {
     }
 
     public LinkedNode getIntersectionNodeByHash(LinkedNode headA, LinkedNode headB){
-        Set<LinkedNode> visited  = new HashSet<>();
-        LinkedNode tmp = headA;
-        while (tmp!=null){
-            visited.add(tmp);
-            tmp = tmp.next;
+        Set<LinkedNode> visited = new HashSet<LinkedNode>();
+        LinkedNode temp = headA;
+        while (temp != null) {
+            visited.add(temp);
+            temp = temp.next;
         }
-        tmp = headB;
-        while (tmp!=null){
-            if (visited.contains(tmp)){
-                return tmp;
+        temp = headB;
+        while (temp != null) {
+            if (visited.contains(temp)) {
+                return temp;
             }
-            tmp = tmp.next;
+            temp = temp.next;
         }
         return null;
     }
@@ -56,7 +58,7 @@ public class IntersectionNode {
 //        System.out.println(res);
 
         LinkedNode res2 = new IntersectionNode().getIntersectionNodeByHash(nodeA,nodeB);
-        System.out.println(res2);
+        System.out.println(JSONObject.toJSONString(res2));
 
     }
 }
