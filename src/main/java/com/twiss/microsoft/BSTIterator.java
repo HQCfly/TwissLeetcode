@@ -40,5 +40,6 @@ public class BSTIterator {
         BSTIterator bstIterator = new BSTIterator(root);
         System.out.println(bstIterator.next());
         System.out.println(bstIterator.hasNext());
+
     }
 }
