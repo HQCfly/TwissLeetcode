@@ -1,5 +1,7 @@
 package com.twiss.microsoft;
 
+import java.util.Random;
+
 /**
  * 乘积最大子数组
  *
@@ -13,15 +15,15 @@ public class MaxProduct {
         int ans = nums[0];
         for (int i = 1; i < n; ++i) {
             int mx = maxP, mn = minP;
-            maxP = Math.max(mx*nums[i],Math.max(nums[i],mn*nums[i]));
-            minP = Math.max(mn*nums[i],Math.min(nums[i],mx*nums[i]));
-            ans = Math.max(maxP,minP);
+            maxP = Math.max(mx * nums[i], Math.max(nums[i], mn * nums[i]));
+            minP = Math.max(mn * nums[i], Math.min(nums[i], mx * nums[i]));
+            ans = Math.max(maxP, minP);
         }
         return ans;
     }
 
     public static void main(String[] args) {
-        int[] nums = {2,3,-2,4};
+        int[] nums = {2, 3, -2, 4};
         int ans = new MaxProduct().getMaxProduct(nums);
         System.out.println(ans);
     }
