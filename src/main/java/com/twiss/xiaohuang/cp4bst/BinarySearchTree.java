@@ -171,7 +171,6 @@ public class BinarySearchTree extends AbstractBinaryTree {
         }
         if (directPostNode != delNode.rightChild) {
             parentNode.leftChild = directPostNode.rightChild;
-            ;
             directPostNode.rightChild = null;
         }
         return directPostNode;
