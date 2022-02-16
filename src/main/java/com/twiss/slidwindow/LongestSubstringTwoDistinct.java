@@ -6,7 +6,7 @@ import java.util.HashMap;
  * 至多包含两个不同字符的最长子串
  * intpu: eceba output:3   因为ece
  * input: ccaabbb output:5 因为aabbb
- *
+ * https://www.jianshu.com/p/3494e4dcea00
  * @Author: Twiss
  * @Date: 2022/2/16 1:26 下午
  */
