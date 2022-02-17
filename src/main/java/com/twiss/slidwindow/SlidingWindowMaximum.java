@@ -55,35 +55,35 @@ public class SlidingWindowMaximum {
         // 将前k个元素组成一个单调栈
         for (int i = 0; i < k; ++i) {
             // last是栈顶元素
-            while (!stack.isEmpty()&&nums[i]>=nums[stack.peekLast()]){
+            while (!stack.isEmpty() && nums[i] >= nums[stack.peekLast()]) {
                 stack.pollLast();
             }
             stack.offerLast(i);
         }
-        int[] ans = new int[n-k+1];
+        int[] ans = new int[n - k + 1];
         // 栈低是最大的元素
         ans[0] = nums[stack.peekFirst()];
-        for (int i=k;i<n;++i){
-            while (!stack.isEmpty()&&nums[i]>=nums[stack.peekLast()]){
+        for (int i = k; i < n; ++i) {
+            while (!stack.isEmpty() && nums[i] >= nums[stack.peekLast()]) {
                 stack.pollLast();
             }
             stack.offerLast(i);
             // 当最大元素下标已经小于当前滑动窗口最小值，则删除
-            while (stack.peekFirst()<=i-k){
+            while (stack.peekFirst() <= i - k) {
                 stack.pollFirst();
             }
-            ans[i-k+1] = nums[stack.peekFirst()];
+            ans[i - k + 1] = nums[stack.peekFirst()];
         }
         return ans;
     }
 
     public static void main(String[] args) {
-        int[] nums = {1,3,-1,-3,5,3,6,7};
+        int[] nums = {1, 3, -1, -3, 5, 3, 6, 7};
         int k = 3;
-        int[] res = new SlidingWindowMaximum().getMaxSlidingWindowByMaxHeap(nums,k);
+        int[] res = new SlidingWindowMaximum().getMaxSlidingWindowByMaxHeap(nums, k);
         System.out.println(JSONObject.toJSONString(res));
 
-        int[] res2 = new SlidingWindowMaximum().getMaxSlidingWindowBySingleStack(nums,k);
+        int[] res2 = new SlidingWindowMaximum().getMaxSlidingWindowBySingleStack(nums, k);
         System.out.println(JSONObject.toJSONString(res2));
 
     }
