@@ -42,14 +42,14 @@ public class MinimumSizeSubarraySum {
         }
         // 使用二分法查找target在前缀和里面的位置
         for (int i = 1; i < n; i++) {
-            int t = target+preSum[i-1];
+            int t = target + preSum[i - 1];
             // 输入的是前缀和数组和 目标key
-            int bound = Arrays.binarySearch(preSum,t);
-            if (bound<0){
-                bound = -bound-1;
+            int bound = Arrays.binarySearch(preSum, t);
+            if (bound < 0) {
+                bound = -bound - 1;
             }
-            if (bound<=n){
-                ans = Math.min(ans,bound-(i-1));
+            if (bound <= n) {
+                ans = Math.min(ans, bound - (i - 1));
             }
         }
         return ans;
@@ -62,8 +62,8 @@ public class MinimumSizeSubarraySum {
                 .getMinimumSubarrayBySlidWindow(nums, target);
         System.out.println(ans);
 
-        int ans2 =new MinimumSizeSubarraySum()
-                .getMinimumByPreSum(nums,target);
+        int ans2 = new MinimumSizeSubarraySum()
+                .getMinimumByPreSum(nums, target);
         System.out.println(ans2);
     }
 }
