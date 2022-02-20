@@ -8,6 +8,12 @@ import com.alibaba.fastjson.JSONObject;
  */
 public class MaxSubArray {
 
+    /**
+     * 时间复杂度: O(n)
+     * 空间复杂度: O(1)
+     * @param nums
+     * @return
+     */
     public int getMaxResultByDp(int[] nums) {
         int pre = 0, sum = nums[0];
         for (int i : nums) {
