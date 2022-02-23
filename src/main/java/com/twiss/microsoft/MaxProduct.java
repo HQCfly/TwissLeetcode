@@ -1,6 +1,5 @@
 package com.twiss.microsoft;
 
-import java.util.Random;
 
 /**
  * 乘积最大子数组

@@ -28,34 +28,31 @@ public class QuickSorted {
     }
 
     private int partition(int[] array, int left, int right) {
-//        int randomIndex = left+new Random().nextInt(right - left + 1);
-//        System.out.println("randomIndex:"+randomIndex);
-//        swap(array, right, randomIndex);
-//        // 基准值
-//        int pivot = array[right];
-//        System.out.println("pivot:"+pivot);
-//
-//        // 将比pivot小的元素都替换到靠前位置
-//        int i = left, j=right;
-//        while (i<j){
-//            if (array[i++]>pivot){
-//                swap(array,--i,--j);
-//            }
-//        }
-//        swap(array, i,right);
+        int randomIndex = left+new Random().nextInt(right - left + 1);
+        swap(array, right, randomIndex);
         // 基准值
         int pivot = array[right];
-        System.out.println("pivot:" + pivot);
-
-        int i = left - 1;
-        for (int j = left; j <= right - 1; j++) {
-            if (array[j] <= pivot) {
-                i++;
-                swap(array, i, j);
+        // 将比pivot小的元素都替换到靠前位置
+        int i = left, j=right;
+        while (i<j){
+            if (array[i++]>pivot){
+                swap(array,--i,--j);
             }
         }
-        // 将前面lt个元素的最后一个元素与left替换，因为left是前lt元素最大
-        swap(array, i + 1, right);
+        swap(array, i,right);
+//        // 基准值
+//        int pivot = array[right];
+//        System.out.println("pivot:" + pivot);
+//
+//        int i = left - 1;
+//        for (int j = left; j <= right - 1; j++) {
+//            if (array[j] <= pivot) {
+//                i++;
+//                swap(array, i, j);
+//            }
+//        }
+//        // 将前面lt个元素的最后一个元素与left替换，因为left是前lt元素最大
+//        swap(array, i + 1, right);
 
         return i + 1;
     }
