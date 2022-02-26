@@ -30,7 +30,7 @@ public class CourseSchedule {
         }
         // 5. 取出节点对应学习这门课
         // 遍历当期那邻接表，更新其入度；更新后查看入度是否0，加入队列中
-        bfs(inDegree,adj,course,deque);
+        bfs(inDegree,adj,deque);
         // 6. 遍历入队，如果有课程的入度不为0，返回false
         for (int key:inDegree.keySet()){
             if (inDegree.get(key)!=0){
@@ -56,7 +56,6 @@ public class CourseSchedule {
 
     private void bfs(Map<Integer, Integer> inDegree,
                      Map<Integer, List<Integer>> adj,
-                     int[][] prerequisites,
                      Deque<Integer> deque) {
         while (!deque.isEmpty()){
             // 去除队列队首元素
