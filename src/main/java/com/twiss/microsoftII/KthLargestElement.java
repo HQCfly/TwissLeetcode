@@ -43,7 +43,7 @@ public class KthLargestElement {
     }
 
     private int randomPartition(int[] nums, int left, int right) {
-        int randomIndex = new Random().nextInt(right - left + 1)+1;
+        int randomIndex = new Random().nextInt(right - left + 1) + 1;
         swap(nums, randomIndex, right);
         return partition(nums, left, right);
     }
@@ -69,32 +69,32 @@ public class KthLargestElement {
     public int getKthByHeap(int[] nums, int k) {
         int heapSize = nums.length;
         int n = nums.length;
-        buildMaxHeap(nums,heapSize);
+        buildMaxHeap(nums, heapSize);
         for (int i = n - 1; i >= n - k + 1; --i) {
             swap(nums, 0, i);
             --heapSize;
-            maxHeapify(nums,0,heapSize);
+            maxHeapify(nums, 0, heapSize);
         }
         return nums[0];
     }
 
     private void buildMaxHeap(int[] nums, int heapSize) {
         for (int i = heapSize / 2; i >= 0; --i) {
-            maxHeapify(nums,i,heapSize);
+            maxHeapify(nums, i, heapSize);
         }
     }
 
-    private void maxHeapify(int[] nums,int index, int heapSize){
-        int left = index*2+1, right = index*2+2, largest = index;
-        if (left<heapSize&&nums[left]>nums[largest]){
+    private void maxHeapify(int[] nums, int index, int heapSize) {
+        int left = index * 2 + 1, right = index * 2 + 2, largest = index;
+        if (left < heapSize && nums[left] > nums[largest]) {
             largest = left;
         }
-        if (right<heapSize&&nums[right]>nums[largest]){
+        if (right < heapSize && nums[right] > nums[largest]) {
             largest = right;
         }
-        if (largest!=index){
-            swap(nums,index,largest);
-            maxHeapify(nums,largest,heapSize);
+        if (largest != index) {
+            swap(nums, index, largest);
+            maxHeapify(nums, largest, heapSize);
         }
     }
 
