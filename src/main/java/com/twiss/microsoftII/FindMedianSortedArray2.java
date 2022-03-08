@@ -47,12 +47,14 @@ public class FindMedianSortedArray2 {
             int newOffset2 = Math.min(len2, offset2 + half) - 1;
             int pivot1 = nums1[newOffset1];
             int pivot2 = nums2[newOffset2];
+            // pivot1<=pivot2表示num1的一半的一半元素比num2的一半的一半还小，因此将num1的offset往后移动到new offset
+            // 减去删除的个数
             if (pivot1 <= pivot2) {
                 // 数量，加1
                 k -= (offset1 - newOffset1) + 1;
                 offset1 = newOffset1 + 1;
             } else {
-                k -= (offset2 - newOffset1) + 1;
+                k -= (offset2 - newOffset2) + 1;
                 offset2 = newOffset2 + 1;
             }
         }
