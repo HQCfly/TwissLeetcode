@@ -10,7 +10,7 @@ package com.twiss.microsoftII;
 public class IsValidBST {
 
     public boolean validBst(TreeNode root){
-
+        return false;
     }
 
     public static void main(String[] args) {
