@@ -17,14 +17,14 @@ public class Codec3 {
 
     public String serialize(TreeNode root) {
         String ans = rserialize(root, "");
-        return ans.substring(0,ans.length()-1);
+        return ans.substring(0, ans.length() - 1);
     }
 
     private String rserialize(TreeNode root, String str) {
         if (root == null) {
             str += "None,";
         } else {
-            str += String.valueOf(root.val)+",";
+            str += String.valueOf(root.val) + ",";
             str = rserialize(root.left, str);
             str = rserialize(root.right, str);
         }
