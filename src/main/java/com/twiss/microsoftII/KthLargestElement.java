@@ -43,7 +43,7 @@ public class KthLargestElement {
     }
 
     private int randomPartition(int[] nums, int left, int right) {
-        int randomIndex = new Random().nextInt(right - left + 1) + 1;
+        int randomIndex = left+new Random().nextInt(right - left + 1);
         swap(nums, randomIndex, right);
         return partition(nums, left, right);
     }
