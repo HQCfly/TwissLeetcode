@@ -1,7 +1,6 @@
 package com.twiss.microsoftII;
 
 import com.alibaba.fastjson.JSONObject;
-import scala.Int;
 
 import java.util.ArrayList;
 import java.util.List;
