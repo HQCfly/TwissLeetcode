@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
+ * https://leetcode-cn.com/problems/n-queens-ii/solution/nhuang-hou-ii-by-leetcode-solution/
  * n皇后II方案数
  * @Author: Twiss
  * @Date: 2021/5/23 9:08 下午
