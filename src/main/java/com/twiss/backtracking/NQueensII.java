@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
+ * n皇后II方案数
  * @Author: Twiss
  * @Date: 2021/5/23 9:08 下午
  */
@@ -37,6 +38,7 @@ public class NQueensII {
 
     private boolean isValid(int col, int row, int[] columnRow) {
         for (int r = 0; r < row; r++) {
+            // |行标-列标| == |边界行-边界列|
             if (columnRow[r] == col || row - r == Math.abs(columnRow[r] - col)) {
                 return false;
             }
