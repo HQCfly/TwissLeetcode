@@ -16,7 +16,6 @@ public class NQueensII {
     public int count = 0;
 
     private int solveQueens(int n) {
-        List<String[]> res = new ArrayList<>();
         int[] columnRow = new int[n];
         backtrace(n, 0, columnRow);
         return count;
@@ -29,6 +28,7 @@ public class NQueensII {
         }
 
         for (int i = 0; i < n; i++) {
+            // 第row行第i列
             columnRow[row] = i;
             if (!isValid(i, row, columnRow)) {
                 continue;
