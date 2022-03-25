@@ -62,7 +62,7 @@ public class LongestPalindrome {
             if (subLen >end-start){
                 // 以i为中心向两边扩散
                 start = i-(subLen-1)/2;
-                end = i+len/2;
+                end = i+subLen/2;
             }
         }
         return words.substring(start,end+1);
