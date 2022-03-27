@@ -34,12 +34,12 @@ public class LongestString {
                 r = m - 1;
             }
         }
+        System.out.println("S1: " + words.substring(l1, r1));
+        System.out.println("S2: " + words.substring(l2, r2));
         l1 = l1 + 1;
         r1 = r1 + 1;
         l2 = l2 + 1;
         r2 = r2 + 1;
-        System.out.println("S1: " + words.substring(l1, r1));
-        System.out.println("S2: " + words.substring(l2, r2));
         System.out.println("index: l1:" + l1 + " r1:" + r1 + " l2:" + l2 + " r2:" + r2);
     }
 
@@ -71,6 +71,14 @@ public class LongestString {
         return valid;
     }
 
+    /**
+     * 10011
+     * output:
+     *  S1: 001
+     *  S2: 011
+     *  l1:1 r1:4 l2:2 r2:5
+     * @param args
+     */
     public static void main(String[] args) {
         String words = "10011";
         new LongestString().getString(words);
@@ -88,8 +96,6 @@ public class LongestString {
         longSubRight = new int[]{begin, end - 1, begin + 1, end};
         int[] ret = longSubLeft[1] - longSubLeft[0] >= longSubRight[1] - longSubRight[0] ? longSubLeft : longSubRight;
         for (int i = 0; i < 4; i++) ret[i]++;
-        System.out.println(s.substring(ret[0], ret[1]));
-        System.out.println(s.substring(ret[2], ret[3]));
         System.out.print(ret[0] + " " + ret[1] + " " + ret[2] + " " + ret[3]);
 
     }
