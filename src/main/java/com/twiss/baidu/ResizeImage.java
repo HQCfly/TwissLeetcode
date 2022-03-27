@@ -25,6 +25,18 @@ public class ResizeImage {
         }
     }
 
+    /**
+     * 2 2
+     * input:
+     * 1 0
+     * 0 1
+     * output:
+     * 1 1 0 0
+     * 1 1 0 0
+     * 0 0 1 1
+     * 0 0 1 1
+     * @param args
+     */
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         String[] s = scanner.nextLine().split(" ");
