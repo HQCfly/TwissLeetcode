@@ -59,6 +59,7 @@ public class LongestString {
                 hashSet.add(one);
                 map.put(one, i);
             } else {
+                // 此时表明S1和S2中的1和0的数量是一样的
                 l1 = map.get(one);
                 r1 = l1 + m - 1;
                 l2 = i;
