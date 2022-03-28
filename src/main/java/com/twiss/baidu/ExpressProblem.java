@@ -7,6 +7,7 @@ import java.util.Scanner;
  * 给01串，对于相邻两位，00和11可以随便删任意一个，01只能删0，问能生成多少个新串
  * 10010 可以生成：10010 1010 1001 110 101 11 10 01 1.
  * https://www.nowcoder.com/discuss/870963?type=all&order=recall&pos=&page=1&ncTraceId=&channel=-1&source_id=search_all_nctrack&gio_id=849BB49B57B86B1C2B598C045E5BDC1B-1648385503023
+ * https://www.nowcoder.com/discuss/871051
  * @Author: Twiss
  * @Date: 2022/3/27 11:36 下午
  */
