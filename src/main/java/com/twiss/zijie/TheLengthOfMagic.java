@@ -7,4 +7,11 @@ package com.twiss.zijie;
  */
 public class TheLengthOfMagic {
 
+    public int getLength(){
+
+    }
+
+    public static void main(String[] args) {
+
+    }
 }
