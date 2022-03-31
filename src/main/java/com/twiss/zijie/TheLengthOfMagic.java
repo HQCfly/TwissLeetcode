@@ -6,4 +6,5 @@ package com.twiss.zijie;
  * @Date: 2022/3/30 10:22 下午
  */
 public class TheLengthOfMagic {
+
 }
