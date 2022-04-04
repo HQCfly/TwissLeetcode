@@ -16,6 +16,7 @@ public class ZJLinkedNode {
 
     ZJLinkedNode(int val) {
         this.val = val;
+        this.next = null;
     }
 
     ZJLinkedNode(int val, ZJLinkedNode next) {
