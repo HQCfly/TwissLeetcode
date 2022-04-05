@@ -5,7 +5,7 @@ import java.util.HashMap;
 /**
  * 最长无重复子串
  * 快慢指针+滑动窗口
- * start =
+ * start = Math.max(map.get(c),start)
  * @Author: Twiss
  * @Date: 2022/3/30 3:35 下午
  */
