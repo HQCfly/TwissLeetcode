@@ -3,8 +3,8 @@ package com.twiss.zijie;
 /**
  * 岛屿数量
  * dfs
- * 时间复杂度O()
- * 空间复杂度O()
+ * 时间复杂度O(mn)
+ * 空间复杂度O(mn)
  * @Author: Twiss
  * @Date: 2022/4/5 8:59 下午
  */
