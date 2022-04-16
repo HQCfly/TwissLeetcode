@@ -1,5 +1,7 @@
 package com.twiss.zijie;
 
+import java.util.Arrays;
+
 /**
  * 长度最小子数组
  * 前缀和或者滑动窗口
@@ -34,11 +36,37 @@ public class MinSubarray {
         return ans == Integer.MAX_VALUE ? 0 : ans;
     }
 
+    public int getMinSubarrayByBinary(int s,int[] nums){
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+        int ans = Integer.MAX_VALUE;
+        int n = nums.length;
+        int[] sum = new int[n+1];
+        for (int i = 1; i <= n; i++) {
+            sum[i] = sum[i-1]+nums[i-1];
+        }
+
+        for (int i=1;i<=n;i++){
+            int target = s+sum[i-1];
+            int bound = Arrays.binarySearch(sum,target);
+            if (bound<0){
+                bound = -bound-1;
+            }
+            if (bound<=n){
+                ans = Math.min(ans,bound-(i-1));
+            }
+        }
+        return ans == Integer.MAX_VALUE?0:ans;
+    }
 
     public static void main(String[] args) {
         int[] nums = {2,3,1,2,4,3};
         int s = 7;
         int ans = new MinSubarray().getMinSubarray(s,nums);
         System.out.println(ans);
+
+        int ans2 = new MinSubarray().getMinSubarrayByBinary(s,nums);
+        System.out.println(ans2);
     }
 }
