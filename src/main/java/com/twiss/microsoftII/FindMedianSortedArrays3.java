@@ -10,7 +10,7 @@ package com.twiss.microsoftII;
  */
 public class FindMedianSortedArrays3 {
 
-    public int getMedia(int[] array1, int[] array2) {
+    public double getMedia(int[] array1, int[] array2) {
         int len1 = array1.length;
         int len2 = array2.length;
         int total = len1 + len2;
@@ -22,7 +22,7 @@ public class FindMedianSortedArrays3 {
             int left = total / 2 - 1;
             int right = total / 2;
             return (getKthElement(array1, array2, left + 1) +
-                    getKthElement(array1, array2, right + 1)) / 2;
+                    getKthElement(array1, array2, right + 1)) / 2.0;
         }
     }
 
@@ -33,10 +33,10 @@ public class FindMedianSortedArrays3 {
         while (true) {
             // 边界问题
             if (len1 == offset1) {
-                return array1[k + offset2 - 1];
+                return array2[k + offset2 - 1];
             }
             if (len2 == offset2) {
-                return array2[k + offset1 - 1];
+                return array1[k + offset1 - 1];
             }
             if (k == 1) {
                 return Math.min(array1[offset1], array2[offset2]);
@@ -58,9 +58,9 @@ public class FindMedianSortedArrays3 {
     }
 
     public static void main(String[] args) {
-        int[] nums1 = {1, 3};
-        int[] nums2 = {2};
-        int ans = new FindMedianSortedArrays3().getMedia(nums1, nums2);
+        int[] nums1 = {1, 2};
+        int[] nums2 = {3,4};
+        double ans = new FindMedianSortedArrays3().getMedia(nums1, nums2);
         System.out.println(ans);
     }
 }
