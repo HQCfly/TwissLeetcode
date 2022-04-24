@@ -6,4 +6,8 @@ package com.twiss.zijie;
  * @Date: 2022/4/23 9:24 下午
  */
 public class TheNumberOfIslands {
+
+    public static void main(String[] args) {
+
+    }
 }
