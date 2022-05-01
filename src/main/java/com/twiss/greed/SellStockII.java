@@ -2,8 +2,8 @@ package com.twiss.greed;
 
 /**
  * 买股票II
- * 时间复杂度O()
- * 空间复杂度O()
+ * 时间复杂度O(N)
+ * 空间复杂度O(1)
  * @Author: Twiss
  * @Date: 2022/5/1 11:14 下午
  */
