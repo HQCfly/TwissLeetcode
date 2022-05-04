@@ -2,8 +2,8 @@ package com.twiss.greed;
 
 /**
  * 加油站
- * 时间复杂度O()
- * 空间复杂度O()
+ * 时间复杂度O(N)
+ * 空间复杂度O(1)
  * @Author: Twiss
  * @Date: 2022/5/3 10:39 下午
  */
