@@ -2,8 +2,8 @@ package com.twiss.greed;
 
 /**
  * 分糖果果
- * 时间复杂度O()
- * 空间复杂度O()
+ * 时间复杂度O(N)
+ * 空间复杂度O(N)
  * @Author: Twiss
  * @Date: 2022/5/4 9:09 下午
  */
