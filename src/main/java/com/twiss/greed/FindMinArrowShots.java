@@ -3,7 +3,9 @@ package com.twiss.greed;
 import java.util.Arrays;
 
 /**
- *
+ * 用最少数量的箭引爆气球
+ * 时间复杂度O(nlogn)
+ * 空间复杂度O(1)
  * @Author: Twiss
  * @Date: 2022/5/5 11:29 下午
  */
