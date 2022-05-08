@@ -15,7 +15,7 @@ public class SellStockFee {
         for (int price:stocks){
             if (price+fee<buy){
                 buy = price+fee;
-            }else if (price<buy){
+            }else if (price>buy){
                 sum+=price-buy;
                 buy = price;
             }
@@ -24,6 +24,9 @@ public class SellStockFee {
     }
 
     public static void main(String[] args) {
-
+        int[] stocks = {1, 3, 2, 8, 4, 9};
+        int fee = 2;
+        int ans = new SellStockFee().getMaxProfit(stocks,fee);
+        System.out.println(ans);
     }
 }
