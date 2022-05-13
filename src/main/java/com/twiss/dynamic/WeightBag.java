@@ -39,12 +39,27 @@ public class WeightBag {
         return dp[wlen][bag];
     }
 
+    public int getMaxValueByOneDimension(int[] weights, int[] values, int bag){
+        int n = weights.length;
+        int[] dp = new int[bag+1];
+        for (int i=0;i<n;i++){
+            for (int j=bag;j>=weights[i];j--){
+                dp[j] = Math.max(dp[j],dp[j-weights[i]]+values[i]);
+            }
+        }
+        return dp[n+1];
+    }
+
+
     public static void main(String[] args) {
         int[] w={1,3,4};
         int[] v={15, 20, 30};
         int bag = 4;
         int maxValue = new WeightBag().getMaxValue(w,v,bag);
         System.out.println(maxValue);
+
+        int maxV = new WeightBag().getMaxValueByOneDimension(w,v,bag);
+        System.out.println(maxV);
     }
 
 }
