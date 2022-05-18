@@ -1,4 +1,4 @@
-package com.twiss.dynamic;
+package com.twiss.dynamic.rob;
 
 /**
  * 打家劫舍I
