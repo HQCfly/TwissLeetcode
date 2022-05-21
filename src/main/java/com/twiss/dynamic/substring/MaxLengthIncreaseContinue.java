@@ -27,9 +27,30 @@ public class MaxLengthIncreaseContinue {
         return res;
     }
 
+    public int getMaxLengthByGreed(int[] nums){
+        if (nums==null||nums.length==0){
+            return 0;
+        }
+        int n = nums.length;
+        int res = 1, count=1;
+
+        for (int i=0;i<n-1;i++){
+            if (nums[i+1]>nums[i]){
+                count++;
+            }else {
+                count=1;
+            }
+            res =  Math.max(res,count);
+        }
+        return res;
+    }
+
     public static void main(String[] args) {
         int[] nums = {1,3,5,4,7};
         int ans = new MaxLengthIncreaseContinue().getMaxLength(nums);
         System.out.println(ans);
+
+        int ans2 = new MaxLengthIncreaseContinue().getMaxLengthByGreed(nums);
+        System.out.println(ans2);
     }
 }
