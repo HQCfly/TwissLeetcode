@@ -23,10 +23,29 @@ public class MaxLengthSubstringDuplicate {
         return res;
     }
 
+    public int getMaxByOneDimension(int[] num1,int[] num2){
+        int n = num1.length+1, m = num2.length+1;
+        int[] dp = new int[m];
+
+        int res = 0;
+        for (int i=1;i<n;i++){
+            for (int j=1;j<m;j++){
+                if (num1[i-1]==num2[j-1]){
+                    dp[j] = dp[j-1]+1;
+                    res = Math.max(dp[j],res);
+                }
+            }
+        }
+        return res;
+    }
+
     public static void main(String[] args) {
         int[] num1 = {1,2,3,2,1};
         int[] num2 = {3,2,1,4,7};
         int ans = new MaxLengthSubstringDuplicate().getMax(num1,num2);
         System.out.println(ans);
+
+        int ans2 = new MaxLengthSubstringDuplicate().getMax(num1,num2);
+        System.out.println(ans2);
     }
 }
