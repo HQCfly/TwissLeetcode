@@ -25,7 +25,7 @@ public class MinimumSizeSubarraySum {
                 start++;
             }
         }
-        return ans;
+        return ans == Integer.MAX_VALUE ? 0 : ans;
     }
 
     public int getMinimumByPreSum(int[] nums, int target) {
