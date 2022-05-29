@@ -14,7 +14,7 @@ import com.alibaba.fastjson.JSONObject;
  * @Author: Twiss
  * @Date: 2022/5/29 1:42 下午
  */
-public class SpiralArray {
+public class SpiralArrayII {
 
     public int[][] getSpiral(int n){
         int[][] matrix = new int[n][n];
@@ -53,7 +53,7 @@ public class SpiralArray {
 
     public static void main(String[] args) {
         int n = 3;
-        int[][] matrix = new SpiralArray().getSpiral(n);
+        int[][] matrix = new SpiralArrayII().getSpiral(n);
         System.out.println(JSONObject.toJSONString(matrix));
     }
 }
