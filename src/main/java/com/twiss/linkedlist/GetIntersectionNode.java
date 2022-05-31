@@ -10,40 +10,43 @@ import com.alibaba.fastjson.JSONObject;
 public class GetIntersectionNode {
 
     public LinkedNode getIntersection(LinkedNode headA,LinkedNode headB){
-        LinkedNode currA = headA;
-        LinkedNode currB = headB;
+        LinkedNode curA = headA;
+        LinkedNode curB = headB;
         int lenA = 0, lenB = 0;
-        while (currA!=null){
+        while (curA != null) { // 求链表A的长度
             lenA++;
-            currA = currA.next;
+            curA = curA.next;
         }
-
-        while (currB!=null){
+        while (curB != null) { // 求链表B的长度
             lenB++;
-            currB = currB.next;
+            curB = curB.next;
         }
-
-        currA = headA;
-        currB = headB;
-        if (lenB>lenA){
+        curA = headA;
+        curB = headB;
+        // 让curA为最长链表的头，lenA为其长度
+        if (lenB > lenA) {
+            //1. swap (lenA, lenB);
             int tmpLen = lenA;
             lenA = lenB;
             lenB = tmpLen;
-            LinkedNode tmp  =currA;
-            currA = currB;
-            currB = tmp;
+            //2. swap (curA, curB);
+            LinkedNode tmpNode = curA;
+            curA = curB;
+            curB = tmpNode;
         }
-
-        int gap = lenA-lenB;
-        while (gap-->0){
-            currA = currA.next;
+        // 求长度差
+        int gap = lenA - lenB;
+        // 让curA和curB在同一起点上（末尾位置对齐）
+        while (gap-- > 0) {
+            curA = curA.next;
         }
-        while (currA!=null){
-            if (currA==currB){
-                return currA;
+        // 遍历curA 和 curB，遇到相同则直接返回
+        while (curA != null) {
+            if (curA == curB) {
+                return curA;
             }
-            currA = currA.next;
-            currB = currB.next;
+            curA = curA.next;
+            curB = curB.next;
         }
         return null;
     }
