@@ -8,12 +8,13 @@ import java.util.List;
 
 /**
  * 三数之和
+ *
  * @Author: Twiss
  * @Date: 2022/6/4 3:49 下午
  */
 public class FourSum {
 
-    public List<List<Integer>> getNums(int[] nums){
+    public List<List<Integer>> getNums(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();
         Arrays.sort(nums);
 
