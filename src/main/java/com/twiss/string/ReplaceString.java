@@ -41,9 +41,28 @@ public class ReplaceString {
         return new String(chars);
     }
 
+    public String getReplaceStringBySb(String s){
+        if(s == null || s.length() == 0){
+            return s;
+        }
+        StringBuilder str = new StringBuilder();
+        for (int i=0;i<s.length();i++){
+            if (s.charAt(i)==' '){
+                str.append("%20");
+            }else {
+                str.append(s.charAt(i));
+            }
+        }
+        return new String(str);
+    }
+
     public static void main(String[] args) {
         String s = "hello world";
         String ans = new ReplaceString().getReplaceString(s);
         System.out.println(ans);
+
+        String s2 = "hello world";
+        String ans2 = new ReplaceString().getReplaceStringBySb(s2);
+        System.out.println(ans2);
     }
 }
