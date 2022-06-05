@@ -1,4 +1,4 @@
-package com.twiss.hashtable;
+package com.twiss.string;
 
 import com.alibaba.fastjson.JSONObject;
 
