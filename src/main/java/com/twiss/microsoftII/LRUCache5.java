@@ -38,7 +38,6 @@ public class LRUCache5 {
     public void put(int key,int val){
         if (hashMap.containsKey(key)){
             deleteKey(key);
-            addRecently(key,val);
         }
         int size = cache.getSize();
         if (cap==size){
