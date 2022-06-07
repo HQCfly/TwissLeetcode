@@ -25,6 +25,22 @@ public class RemoveElement {
         return left;
     }
 
+    public int getNewArrayByDoublePoint(int[] nums, int va){
+        if (nums==null||nums.length==0){
+            return 0;
+        }
+        int fastIndex = 0;
+        int slowIndex;
+        for (slowIndex=0;fastIndex<nums.length;fastIndex++){
+            if (nums[fastIndex]!=va){
+                nums[slowIndex] = nums[fastIndex];
+                slowIndex++;
+            }
+        }
+        return slowIndex;
+    }
+
+
     public int getNewArraySize(int[] nums, int val){
         if (nums==null||nums.length==0){
             return 0;
@@ -47,5 +63,9 @@ public class RemoveElement {
         int[] array2 = {0,1,2,3,3,0,4,2};
         int size2 = new RemoveElement().getNewArraySize(array2,tar);
         System.out.println(size2);
+
+        int[] array3 = {0,1,2,3,3,0,4,2};
+        int size3 = new RemoveElement().getNewArrayByDoublePoint(array3,tar);
+        System.out.println(size3);
     }
 }
