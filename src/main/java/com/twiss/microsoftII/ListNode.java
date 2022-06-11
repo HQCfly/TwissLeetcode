@@ -7,8 +7,8 @@ package com.twiss.microsoftII;
  * @Date: 2022/2/19 1:24 下午
  */
 public class ListNode {
-    int val;
-    ListNode next;
+    public int val;
+    public ListNode next;
 
     ListNode() {
     }
