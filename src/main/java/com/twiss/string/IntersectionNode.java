@@ -4,12 +4,13 @@ import com.twiss.microsoftII.ListNode;
 
 /**
  * 相交链表
+ *
  * @Author: Twiss
  * @Date: 2022/6/11 10:08 下午
  */
 public class IntersectionNode {
 
-    public ListNode getIntersectionNode(ListNode headA,ListNode headB){
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
         ListNode curA = headA;
         ListNode curB = headB;
         int lenA = 0, lenB = 0;
