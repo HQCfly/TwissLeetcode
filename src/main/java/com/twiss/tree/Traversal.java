@@ -2,8 +2,7 @@ package com.twiss.tree;
 
 import com.alibaba.fastjson.JSONObject;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * 前中后遍历二叉树
@@ -34,6 +33,27 @@ public class Traversal {
         getPreorder(root.right,res);
     }
 
+    public List<Integer> preorderTraversalByIteration(TreeNode root){
+        List<Integer> res = new ArrayList<>();
+        if (root==null){
+            return null;
+        }
+        Deque<TreeNode> stack = new LinkedList<>();
+        stack.push(root);
+        // 先将跟节点加入res中，其次将右孩子加入stack，最后将左孩子加入stack中
+        while (!stack.isEmpty()){
+            TreeNode node = stack.pop();
+            res.add(node.val);
+            if (node.right!=null){
+                stack.push(node);
+            }
+            if (node.left!=null){
+                stack.push(node);
+            }
+        }
+        return res;
+    }
+
     /**
      * 中序遍历(left,root,right)
      * @param root 根节点
@@ -56,6 +76,29 @@ public class Traversal {
         getPreorder(root.right,res);
     }
 
+    public List<Integer> inorderTraversalByIteration(TreeNode root){
+        List<Integer> res = new ArrayList<>();
+        if (root==null){
+            return null;
+        }
+        // 左右中
+        Deque<TreeNode> stack = new LinkedList<>();
+        TreeNode curr = root;
+        while (curr!=null||!stack.isEmpty()){
+            // 将所有的左节点加入栈中
+            if (curr!=null){
+                stack.push(curr);
+                curr = curr.left;
+            }else {
+                // 推出当前栈顶元素
+                curr = stack.pop();
+                res.add(curr.val);
+                curr = curr.right;
+            }
+        }
+        return res;
+    }
+
     /**
      * 后序遍历(left,right,root)
      * @param root 根节点
@@ -76,6 +119,28 @@ public class Traversal {
         getPreorder(root.left,res);
         getPreorder(root.right,res);
         res.add(root.val);
+    }
+
+    public List<Integer> postorderTraversalByIteration(TreeNode root){
+        List<Integer> res = new ArrayList<>();
+        if (root==null){
+            return null;
+        }
+        Deque<TreeNode> stack = new LinkedList<>();
+        stack.push(root);
+        // 先将跟节点加入res中，其次将左孩子加入stack，最后将右孩子加入stack中
+        while (!stack.isEmpty()){
+            TreeNode node = stack.pop();
+            res.add(node.val);
+            if (node.left!=null){
+                stack.push(node);
+            }
+            if (node.right!=null){
+                stack.push(node);
+            }
+        }
+        Collections.reverse(res);
+        return res;
     }
 
     public static void main(String[] args) {
