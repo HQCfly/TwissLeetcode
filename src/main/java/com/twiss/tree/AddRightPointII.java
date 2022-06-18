@@ -9,6 +9,7 @@ import java.util.List;
 
 /**
  * 填充每个节点的下一个右侧节点指针II
+ * 非完全二叉树
  * @Author: Twiss
  * @Date: 2022/6/18 3:56 下午
  */
