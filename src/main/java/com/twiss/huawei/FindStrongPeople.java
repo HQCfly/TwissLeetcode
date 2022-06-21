@@ -11,11 +11,10 @@ import java.util.*;
  */
 public class FindStrongPeople {
 
-    public List<Integer> getStrongPeople(int[][] people){
+    public int[] getStrongPeople(int[][] people){
         if (people==null||people.length==0){
             return null;
         }
-        List<Integer> ans = new LinkedList<>();
         Map<Integer,Integer> hashMap = new HashMap<>();
         for (int i=0;i<people.length;i++){
             int teacher = people[i][0];
@@ -28,10 +27,12 @@ public class FindStrongPeople {
                 hashMap.put(student,0);
             }
         }
+        int[] ans = new int[hashMap.keySet().size()];
+        int index = 0;
         for (int key:hashMap.keySet()){
-            ans.add(hashMap.get(key));
+            ans[index] = hashMap.get(key);
+            index++;
         }
-        System.out.println(JSONObject.toJSONString(ans));
         return ans;
     }
 
@@ -48,8 +49,8 @@ public class FindStrongPeople {
                 arr[i] = new int[]{Integer.parseInt(str[0]),Integer.parseInt(str[1])};
                 i++;
             }
-            new FindStrongPeople().getStrongPeople(arr);
+            int[] ans = new FindStrongPeople().getStrongPeople(arr);
+            System.out.println(JSONObject.toJSONString(ans));
         }
-
     }
 }
