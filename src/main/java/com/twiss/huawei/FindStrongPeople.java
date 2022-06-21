@@ -2,7 +2,7 @@ package com.twiss.huawei;
 
 import com.alibaba.fastjson.JSONObject;
 
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * 找到比自己强的人
@@ -10,6 +10,30 @@ import java.util.Scanner;
  * @Date: 2022/6/21 10:34 下午
  */
 public class FindStrongPeople {
+
+    public List<Integer> getStrongPeople(int[][] people){
+        if (people==null||people.length==0){
+            return null;
+        }
+        List<Integer> ans = new LinkedList<>();
+        Map<Integer,Integer> hashMap = new HashMap<>();
+        for (int i=0;i<people.length;i++){
+            int teacher = people[i][0];
+            int student = people[i][1];
+            // teacher大于student，说明该teacher的徒弟考试超过他
+            if (teacher>student){
+                hashMap.put(teacher,hashMap.getOrDefault(student,0)+1);
+            }
+            if (!hashMap.containsKey(student)){
+                hashMap.put(student,0);
+            }
+        }
+        for (int key:hashMap.keySet()){
+            ans.add(hashMap.get(key));
+        }
+        System.out.println(JSONObject.toJSONString(ans));
+        return ans;
+    }
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -24,7 +48,7 @@ public class FindStrongPeople {
                 arr[i] = new int[]{Integer.parseInt(str[0]),Integer.parseInt(str[1])};
                 i++;
             }
-            System.out.println(JSONObject.toJSONString(arr));
+            new FindStrongPeople().getStrongPeople(arr);
         }
 
     }
