@@ -1,5 +1,7 @@
 package com.twiss.huawei;
 
+import java.util.Scanner;
+
 /**
  * 电信号
  *
@@ -75,8 +77,11 @@ public class ElectricalSignal {
     }
 
     public static void main(String[] args) {
-        String s = "00101010101100001010010";
-        String ans = new ElectricalSignal().getMaxContinueSignal(s);
-        System.out.println(ans);
+        Scanner sc = new Scanner(System.in);
+        while (sc.hasNext()){
+            String sig = sc.nextLine();
+            String ans = new ElectricalSignal().getMaxContinueSignal(sig);
+            System.out.println(ans);
+        }
     }
 }
