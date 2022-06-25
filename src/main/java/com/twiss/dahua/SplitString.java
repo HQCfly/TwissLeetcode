@@ -1,5 +1,7 @@
 package com.twiss.dahua;
 
+import com.alibaba.fastjson.JSONObject;
+
 import java.util.Scanner;
 
 /**
@@ -26,14 +28,13 @@ public class SplitString {
         }
         int byte_all = 0;
         byte_all = str1.length();
-        byte byte_[] = str1.getBytes();
+        byte[] byt = str1.getBytes();
         if (n > byte_all)
             n = byte_all;
-        if (byte_[n - 1] < 0) {
-
-            System.out.println("subStrx==" + new String(byte_,0, n-1));
+        if (byt[n - 1] < 0) {
+            System.out.println("subStrx==" + new String(byt,0, n-1));
         } else {
-            System.out.println("subStrx==" + new String(byte_,0, n));
+            System.out.println("subStrx==" + new String(byt,0, n));
         }
     }
 }
