@@ -13,21 +13,29 @@ public class MaxVowelSubstring {
         if (s==null||s.length()==0){
             return 0;
         }
-        Set<String> vowelSet = new HashSet<>();
-        vowelSet.add("a");
-        List<String> list = Arrays.asList("a","e","i","o","u","A","E","I","O","U");
-        for (int i=0;i<s.length();i++){
-            if (list.contains(i)){
-
+        int maxLen = Integer.MIN_VALUE;
+        List<Character> list = Arrays.asList('a','e','i','o','u','A','E','I','O','U');
+        for (int start=0, end = 1;end<s.length();end++){
+            if (list.contains(s.charAt(end))&&list.contains(s.charAt(start))){
+                int len = end-start-1;
+                if (len>=0&&len>=maxLen){
+                    maxLen = len;
+                    start = end;
+                }
             }
         }
+        if (maxLen==Integer.MIN_VALUE){
+            maxLen = 0;
+        }
+        return maxLen;
     }
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         while (sc.hasNext()){
             String str = sc.nextLine();
-
+            int ans = new MaxVowelSubstring().getMax(str);
+            System.out.println(ans);
         }
     }
 }
