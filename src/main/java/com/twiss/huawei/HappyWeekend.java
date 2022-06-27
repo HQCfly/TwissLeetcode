@@ -1,5 +1,7 @@
 package com.twiss.huawei;
 
+import java.util.List;
+
 /**
  * 欢乐周末
  * @Author: Twiss
@@ -7,6 +9,17 @@ package com.twiss.huawei;
  */
 public class HappyWeekend {
 
+    private static int m, n;
+    private static int[][] start;
+    private static int[][] arr;
+    private static boolean[][] mark;
+    private static int[][] end;
+    private static int[] arrival1;
+    private static int[] arrival2;
+
+    private static boolean dfs(int x1,int y1){
+
+    }
 
     public static void main(String[] args) {
 
