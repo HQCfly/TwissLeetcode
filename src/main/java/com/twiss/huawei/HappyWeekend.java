@@ -1,6 +1,5 @@
 package com.twiss.huawei;
 
-import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -11,12 +10,8 @@ import java.util.Scanner;
 public class HappyWeekend {
 
     private static int m, n;
-    private static int[][] start;
     private static int[][] grids;
     private static boolean[][] mark;
-    private static int[][] end;
-    private static boolean[] arrival1;
-    private static boolean[] arrival2;
 
     private static boolean dfs(int x1,int y1, int endX1, int endY1){
         boolean flag = false;
@@ -50,8 +45,8 @@ public class HappyWeekend {
             n = sc.nextInt();
             grids = new int[m][n];
             mark = new boolean[m][n];
-            start = new int[2][2];
-            end = new int[m][2];
+            int[][] start = new int[2][2];
+            int[][] end = new int[m][2];
             int index = 0, endIndex = 0;
             for (int i=0;i<m;i++){
                 for (int j=0;j<n;j++){
