@@ -17,7 +17,8 @@ public class WrongService {
             return true;
         }
         for(int i=0;i<serviceReplay.size();i++){
-            if(serviceReplay.get(i)[0].equals(node) && dfs(serviceReplay,serviceReplay.get(i)[1],wrongService)){    //如果此时服务依赖另外一个服务，则对依赖的服务进行一次故障判断，如为故障则返回true
+            if(serviceReplay.get(i)[0].equals(node) && dfs(serviceReplay,serviceReplay.get(i)[1],wrongService)){
+                //如果此时服务依赖另外一个服务，则对依赖的服务进行一次故障判断，如为故障则返回true
                 return true;
             }
         }
