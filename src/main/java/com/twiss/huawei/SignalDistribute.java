@@ -70,12 +70,12 @@ public class SignalDistribute {
                 int DLft = D - temp;
                 int moLeft = DLft % Ni;
                 int quotientLeft = DLft / Ni;
-                int need_count_left = moLeft == 0 ? quotientLeft : quotientLeft + 1;
+                int needCountLeft = moLeft == 0 ? quotientLeft : quotientLeft + 1;
 
-                if (NiCountLeft >= need_count_left) {
+                if (NiCountLeft >= needCountLeft) {
                     NiLeft.clear();
                     count++;
-                    NiCountLeft -= need_count_left;
+                    NiCountLeft -= needCountLeft;
                 }
 
             }
