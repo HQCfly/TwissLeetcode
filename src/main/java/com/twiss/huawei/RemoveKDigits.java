@@ -42,11 +42,9 @@ public class RemoveKDigits {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        while (sc.hasNext()){
-            String str = sc.nextLine();
-            int k = sc.nextInt();
-            String ans = getMaxValue(str,k);
-            System.out.println(ans);
-        }
+        String str = sc.nextLine();
+        int k = sc.nextInt();
+        String ans = getMaxValue(str,k);
+        System.out.println(ans);
     }
 }
