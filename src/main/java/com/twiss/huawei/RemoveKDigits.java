@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import java.util.Scanner;
 
 /**
+ * 移除k位数字后的最小值
  * @Author: Twiss
  * @Date: 2022/7/4 12:07 下午
  */
