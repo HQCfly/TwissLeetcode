@@ -4,6 +4,7 @@ import java.util.*;
 
 /**
  * 分糖果
+ *
  * @Author: Twiss
  * @Date: 2022/7/6 9:06 下午
  */
@@ -15,25 +16,25 @@ public class DivideCandy {
         int N = sc.nextInt();
         int[] nums = new int[N];
         int sum = 0;
-        for (int i=0;i<N;i++){
+        for (int i = 0; i < N; i++) {
             nums[i] = sc.nextInt();
-            sum+=nums[i];
+            sum += nums[i];
         }
-        if (sum%2==1||N==1){
+        if (sum % 2 == 1 || N == 1) {
             System.out.println(-1);
             return;
         }
-        int target = sum/2;
+        int target = sum / 2;
         // 表示从下标0-i中任取，放入容量为j的背包，价值总和
-        boolean[][] dp = new boolean[N+1][target+1];
-        for (int i=0;i<=N;i++){
+        boolean[][] dp = new boolean[N + 1][target + 1];
+        for (int i = 0; i <= N; i++) {
             dp[i][0] = true;
         }
-        for (int i=1;i<=N;i++){
-            for (int j=1;j<=target;j++){
-                if (j<nums[i-1]){
-                    dp[i][j] = dp[i-1][j];
-                }else {
+        for (int i = 1; i <= N; i++) {
+            for (int j = 1; j <= target; j++) {
+                if (j < nums[i - 1]) {
+                    dp[i][j] = dp[i - 1][j];
+                } else {
                     dp[i][j] = dp[i - 1][j] | dp[i - 1][j - nums[i - 1]];
                 }
             }
