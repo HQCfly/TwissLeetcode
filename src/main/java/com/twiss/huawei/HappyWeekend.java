@@ -27,7 +27,7 @@ public class HappyWeekend {
             if (nextX<0||nextX>=m||nextY<0||nextY>=n){
                 continue;
             }
-            if (grids[nextX][nextY]!=1&&mark[nextX][nextY]){
+            if (grids[nextX][nextY]!=1&&!mark[nextX][nextY]){
                 mark[nextX][nextY] = true;
                 if (dfs(nextX,nextY,endX1,endY1)){
                     flag = true;
