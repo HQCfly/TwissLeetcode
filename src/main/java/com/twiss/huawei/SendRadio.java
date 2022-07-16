@@ -31,6 +31,36 @@ public class SendRadio {
         }
     }
 
+    int count = 0;
+    public int getSiteByDfs(int[][] grids){
+        if (grids==null||grids.length==0){
+            return 0;
+        }
+        int count = 0;
+        int n = grids.length;
+        boolean[] visited = new boolean[n];
+        for (int i=0;i<n;i++){
+            if (!visited[i]){
+                dfs(grids,visited,i);
+            }
+        }
+        return count;
+    }
+
+    private void dfs(int[][] grids, boolean[] visited, int index){
+        boolean flag = true;
+        visited[index] = true;
+        for (int i=index+1;i<grids.length;i++){
+            if (grids[index][i]==1){
+                flag = false;
+                dfs(grids,visited,i);
+            }
+        }
+        if (flag){
+            count++;
+        }
+    }
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String[] arr  = sc.nextLine().split(",");
