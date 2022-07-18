@@ -7,7 +7,10 @@ package com.twiss.huawei;
  */
 public class MockLisp {
 
+    public int getResult(){
 
+        return 0;
+    }
 
     public static void main(String[] args) {
 
