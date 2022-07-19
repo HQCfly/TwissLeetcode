@@ -13,7 +13,7 @@ public class NineGridInputMethod {
 
     public String getOutput(String input){
         Map<Character,String> map = new HashMap<>();
-        map.put('2',",.");
+        map.put('1',",.");
         map.put('2',"abc");
         map.put('3',"def");
         map.put('4',"ghi");
