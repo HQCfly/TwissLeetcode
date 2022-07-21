@@ -6,86 +6,87 @@ import java.util.*;
 
 /**
  * 对手最长顺子
+ *
  * @Author: Twiss
  * @Date: 2022/7/20 6:58 下午
  */
 public class TheLongestChainPoker {
 
-    public String getLongestChain(String[] poker,String[] outputPoker){
+    public String getLongestChain(String[] poker, String[] outputPoker) {
         StringBuilder ans = new StringBuilder();
-        if (poker==null||poker.length==0){
+        if (poker == null || poker.length == 0) {
             return new String(ans.append("NO-CHAIN"));
         }
 
-        Map<Integer,Integer> map = new HashMap<>();
-        map.put(3,4);
-        map.put(4,4);
-        map.put(5,4);
-        map.put(6,4);
-        map.put(7,4);
-        map.put(8,4);
-        map.put(9,4);
-        map.put(10,4);
-        map.put(11,4);
-        map.put(12,4);
-        map.put(13,4);
-        map.put(14,4);
-        for (int i=0;i<poker.length;i++){
+        Map<Integer, Integer> map = new HashMap<>();
+        map.put(3, 4);
+        map.put(4, 4);
+        map.put(5, 4);
+        map.put(6, 4);
+        map.put(7, 4);
+        map.put(8, 4);
+        map.put(9, 4);
+        map.put(10, 4);
+        map.put(11, 4);
+        map.put(12, 4);
+        map.put(13, 4);
+        map.put(14, 4);
+        for (int i = 0; i < poker.length; i++) {
             int num = getStringReflect(poker[i]);
-            int times = map.get(num)-1;
-            if (times>0){
-                map.put(num,times);
-            }else {
+            int times = map.get(num) - 1;
+            if (times > 0) {
+                map.put(num, times);
+            } else {
                 map.remove(num);
             }
         }
-        for (int i=0;i<outputPoker.length;i++){
+        for (int i = 0; i < outputPoker.length; i++) {
             int num = getStringReflect(outputPoker[i]);
-            int times = map.get(num)-1;
-            if (times>0){
-                map.put(num,times);
-            }else {
+            int times = map.get(num) - 1;
+            if (times > 0) {
+                map.put(num, times);
+            } else {
                 map.remove(num);
             }
         }
-        int preStart = 0, preEnd = 0,preMax=0, max=1;
+        int preStart = 0, preEnd = 0, preMax = 0, max = 1;
         List<Integer> keyList = new ArrayList<>(map.keySet());
-        for (int start=0,end=1;end<keyList.size();end++){
-            int dis = keyList.get(end)-keyList.get(end-1);
-            if (dis==1){
+        for (int start = 0, end = 1; end < keyList.size(); end++) {
+            int dis = keyList.get(end) - keyList.get(end - 1);
+            if (dis == 1) {
                 max++;
-                if (end==keyList.size()-1){
-                    if (max>=preMax){
+                if (end == keyList.size() - 1) {
+                    if (max >= preMax) {
                         preMax = max;
                         preStart = start;
                         preEnd = end;
                     }
                 }
-            }else {
-                if (max>=preMax){
+            } else {
+                if (max >= preMax) {
                     preMax = max;
                     preStart = start;
-                    preEnd = end-1;
+                    preEnd = end - 1;
                 }
                 start = end;
                 max = 1;
             }
         }
-        if (preMax>=5){
-            for (int i=preStart;i<=preEnd;i++){
+        if (preMax >= 5) {
+            for (int i = preStart; i <= preEnd; i++) {
                 String ele = getIntReflect(keyList.get(i));
                 ans.append(ele);
-                if (i!=preEnd){
+                if (i != preEnd) {
                     ans.append("-");
                 }
             }
-        }else {
+        } else {
             ans.append("NO-CHAIN");
         }
         return new String(ans);
     }
 
-    private static int getStringReflect(String poker){
+    private static int getStringReflect(String poker) {
         switch (poker) {
             case "J":
                 return 11;
@@ -100,7 +101,7 @@ public class TheLongestChainPoker {
         }
     }
 
-    private static String getIntReflect(int poker){
+    private static String getIntReflect(int poker) {
 
         switch (poker) {
             case 11:
@@ -120,7 +121,7 @@ public class TheLongestChainPoker {
         Scanner sc = new Scanner(System.in);
         String[] poker = sc.nextLine().split("-");
         String[] outputPoker = sc.nextLine().split("-");
-        String ans = new TheLongestChainPoker().getLongestChain(poker,outputPoker);
+        String ans = new TheLongestChainPoker().getLongestChain(poker, outputPoker);
         System.out.println(ans);
     }
 }
