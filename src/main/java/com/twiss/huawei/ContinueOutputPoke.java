@@ -1,11 +1,11 @@
 package com.twiss.huawei;
 
-import com.alibaba.fastjson.JSONObject;
 
 import java.util.*;
 
 /**
  * 连续出牌
+ * 最大出牌数量
  * @Author: Twiss
  * @Date: 2022/7/23 6:29 下午
  */
