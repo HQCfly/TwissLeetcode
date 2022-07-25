@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 /**
+ * 信道分配
  * @Author: Twiss
  * @Date: 2022/6/30 10:22 下午
  */
