@@ -1,7 +1,6 @@
 package com.twiss.huawei;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -32,7 +31,6 @@ public class MinCostByDp {
         }
         float meanValue = sumValue/(float)arrNum;
         // 2、倒叙排列
-        numberListFloat.sort((o1, o2) -> {o2-o1});
         //按提交时间降序 --Lamdba表达式
         Collections.sort(numberListFloat, (a, b) -> b.compareTo(a));
 
@@ -65,7 +63,16 @@ public class MinCostByDp {
         return avgArrays;
     }
 
-    private 
+    private Integer transFloatToIntList(List<Float> arr){
+        Integer intList = 0;
+
+        return intList;
+    }
+
+    private List<Float> getList(List<Float> numberListFloat, float meanValue, double sqr){
+        List<Float> tmp = new ArrayList<>();
+        return tmp;
+    }
 
     public static void main(String[] args) {
 
