@@ -6,7 +6,7 @@ package com.twiss.microsoftII;
  */
 public class KthLargestElement3 {
 
-    public int getKthEle(){
+    public int getKthEle(int[] nums){
 
     }
 
