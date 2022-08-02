@@ -7,7 +7,7 @@ package com.twiss.microsoftII;
 public class KthLargestElement3 {
 
     public int getKthEle(int[] nums){
-
+        return  0;
     }
 
     public static void main(String[] args) {
