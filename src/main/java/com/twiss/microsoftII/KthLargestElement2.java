@@ -18,8 +18,8 @@ public class KthLargestElement2 {
         if (pivot == index) {
             return nums[pivot];
         }
-        return pivot < index ? randomPartition(nums, pivot + 1,right, index) :
-                randomPartition(nums, left,pivot - 1, index);
+        return pivot < index ? randomPartition(nums, pivot + 1, right, index) :
+                randomPartition(nums, left, pivot - 1, index);
     }
 
     private int partition(int[] nums, int left, int right) {
