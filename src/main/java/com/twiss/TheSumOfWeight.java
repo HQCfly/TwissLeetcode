@@ -10,6 +10,9 @@ import java.util.*;
  * 1 5
  * 4 1
  * 3 5
+ *
+ * output:
+ * 3
  * @Author: Twiss
  * @Date: 2022/8/10 7:51 下午
  */
