@@ -30,7 +30,7 @@ public class MonotoneIncreasingDigits {
     }
 
     public static void main(String[] args) {
-        int n = 123234;
+        int n = 332;
         int ans = new MonotoneIncreasingDigits().getMaxDigits(n);
         System.out.println(ans);
     }

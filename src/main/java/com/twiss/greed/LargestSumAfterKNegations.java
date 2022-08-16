@@ -1,5 +1,7 @@
 package com.twiss.greed;
 
+import com.alibaba.fastjson.JSONObject;
+
 import java.util.Arrays;
 import java.util.stream.IntStream;
 
@@ -28,6 +30,7 @@ public class LargestSumAfterKNegations {
                 k--;
             }
         }
+        System.out.println(JSONObject.toJSONString(arrays));
         while (k>0){
             arrays[n] = -arrays[n];
             k--;
@@ -36,8 +39,8 @@ public class LargestSumAfterKNegations {
     }
 
     public static void main(String[] args) {
-        int[] arrays = {2,-3,-1,5,-4};
-        int k = 2;
+        int[] arrays = {3,-1,0,2};
+        int k = 3;
         int ans = new LargestSumAfterKNegations().getMaxSum(arrays,k);
         System.out.println(ans);
     }

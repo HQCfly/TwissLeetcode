@@ -28,9 +28,11 @@ public class ReconstructQueue {
         });
 
         LinkedList<int[]> queue = new LinkedList<int[]>();
+        System.out.println(JSONObject.toJSONString(people));
         for (int[] p:people){
             queue.add(p[1],p);
         }
+
         return queue.toArray(new int[people.length][]);
     }
 
