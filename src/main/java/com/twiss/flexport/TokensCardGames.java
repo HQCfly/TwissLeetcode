@@ -15,6 +15,13 @@ public class TokensCardGames {
 
     private Map<String,Integer> card;
     private Map<String,Integer> player;
+    private Map<String,Integer> playerCards;
+
+    public TokensCardGames(){
+        this.card = new HashMap<>();
+        this.player = new HashMap<>();
+        this.playerCards = new HashMap<>();
+    }
 
     public boolean canPurchase() {
         Map<String,Integer> resultCard = new HashMap<>();
@@ -40,7 +47,7 @@ public class TokensCardGames {
                 for (String tokenCard:player.keySet()){
                     player.put(tokenCard,player.get(tokenCard)-card.get(tokenCard));
                 }
-                player.put(cardName,player.getOrDefault(cardName,0)+1);
+                playerCards.put(cardName,playerCards.getOrDefault(cardName,0)+1);
             }
         }
     }
@@ -66,6 +73,6 @@ public class TokensCardGames {
         }
 
         tg.purchase(cards, player);
-
+        System.out.println(JSONObject.toJSONString(tg.playerCards));
     }
 }
