@@ -52,6 +52,22 @@ public class TokensCardGames {
         }
     }
 
+    public static void print(Map<String,Integer> map){
+
+        StringBuilder res = new StringBuilder();
+        res.append("{");
+        int idx = 0;
+        for (String key:map.keySet()){
+            res.append("\"").append(key).append("\"").append(":").append(map.get(key));
+            if (idx<map.size()-1){
+                res.append(",");
+            }
+            idx++;
+        }
+        res.append("}");
+        System.out.println(res);
+    }
+
     public static void main(String[] args) {
         TokensCardGames tg = new TokensCardGames();
         Map<String,Map<String,Integer>> cards = new HashMap<>();
@@ -73,6 +89,7 @@ public class TokensCardGames {
         }
 
         tg.purchase(cards, player);
-        System.out.println(JSONObject.toJSONString(tg.playerCards));
+        print(tg.player);
+        print(tg.playerCards);
     }
 }
