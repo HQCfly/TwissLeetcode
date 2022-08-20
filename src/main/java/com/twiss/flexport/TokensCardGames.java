@@ -13,7 +13,10 @@ import java.util.Map;
  */
 public class TokensCardGames {
 
-    public boolean canPurchase(Map<String,Integer> card, Map<String,Integer> player) {
+    private Map<String,Integer> card;
+    private Map<String,Integer> player;
+
+    public boolean canPurchase() {
         Map<String,Integer> resultCard = new HashMap<>();
         for (String tokenCard : player.keySet()) {
             if (!card.containsKey(tokenCard)) {
@@ -32,8 +35,8 @@ public class TokensCardGames {
 
     public void purchase(Map<String,Map<String,Integer>> cards, Map<String,Integer> player) {
         for (String cardName:cards.keySet()){
-            Map<String,Integer> card = cards.get(cardName);
-            if (canPurchase(card,player)){
+            card = cards.get(cardName);
+            if (canPurchase()){
                 for (String tokenCard:player.keySet()){
                     player.put(tokenCard,player.get(tokenCard)-card.get(tokenCard));
                 }
@@ -55,9 +58,10 @@ public class TokensCardGames {
         player.put("WH",4);
         player.put("BL",2);
         player.put("B",5);
-
+        tg.player = player;
         for (String cardName:cards.keySet()){
-            boolean valid = tg.canPurchase(cards.get(cardName),player);
+            tg.card = cards.get(cardName);
+            boolean valid = tg.canPurchase();
             System.out.println(valid);
         }
 
