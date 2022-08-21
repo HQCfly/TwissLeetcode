@@ -21,7 +21,11 @@ public class BoardGame {
 
     public void move(int[] current, int[] target, boolean isNextPlayer){
         if (canMove(current,target,isNextPlayer)){
-            System.out.println("tmpBoard: "+JSONObject.toJSONString(tmpBoard));
+            if (isNextPlayer){
+                tmpBoard[target[0]][target[1]] = '2';
+            }else {
+                tmpBoard[target[0]][target[1]] = '1';
+            }
             board = tmpBoard.clone();
         }else {
             System.out.println("Target position couldn't arrival!");
@@ -74,7 +78,6 @@ public class BoardGame {
                 ans = moveNextStep(newBoard,x+1,y+1,targetX,targetY,isNextPlayer)||
                         moveNextStep(newBoard,x+1,y-1,targetX,targetY,isNextPlayer);
                 if (!ans){
-                    System.out.println(x+" "+y);
                     newBoard[x][y] = tmp;
                 }
             }
@@ -127,6 +130,21 @@ public class BoardGame {
                 0<=j&&j<board.length;
     }
 
+    public static void printArr(char[][] board){
+        StringBuilder ans = new StringBuilder();
+        ans.append("[");
+        for (int i=0;i<board.length;i++){
+
+            for (int j=0;j<board.length;j++){
+                ans.append(board[i][j]);
+                if (j==board.length-1){
+                    ans.append(',');
+                };
+            }
+        }
+        ans.append("]");
+        System.out.println(new String(ans));
+    }
 
     public static void main(String[] args) {
         BoardGame bg = new BoardGame();
@@ -145,5 +163,6 @@ public class BoardGame {
         System.out.println(ans);
 
         bg.move(current,target,false);
+        printArr(bg.board);
     }
 }

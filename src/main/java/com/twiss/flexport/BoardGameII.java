@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 只能网斜前方走
+ * 只能网斜前方走，能吃掉棋子
  * @Author: Twiss
  * @Date: 2022/8/21 4:30 下午
  */
@@ -21,8 +21,13 @@ public class BoardGameII {
 
     public void move(int[] current, int[] target, boolean isNextPlayer){
         if (canMove(current,target,isNextPlayer)){
-            System.out.println("tmpBoard: "+JSONObject.toJSONString(tmpBoard));
+            if (isNextPlayer){
+                tmpBoard[target[0]][target[1]] = '2';
+            }else {
+                tmpBoard[target[0]][target[1]] = '1';
+            }
             board = tmpBoard.clone();
+
         }else {
             System.out.println("Target position couldn't arrival!");
         }
@@ -58,25 +63,20 @@ public class BoardGameII {
         char tmp = newBoard[x][y];
         if (isNextPlayer){
             // 白旗走法
-            if (newBoard[x][y]!='1'){
-                newBoard[x][y] = '2';
-                ans = moveNextStep(newBoard,x-1,y-1,targetX,targetY,isNextPlayer)||
-                        moveNextStep(newBoard,x-1,y+1,targetX,targetY,isNextPlayer);
-                if (!ans){
-                    newBoard[x][y] = tmp;
-                }
+            newBoard[x][y] = '2';
+            ans = moveNextStep(newBoard,x-1,y-1,targetX,targetY,isNextPlayer)||
+                    moveNextStep(newBoard,x-1,y+1,targetX,targetY,isNextPlayer);
+            if (!ans){
+                newBoard[x][y] = tmp;
             }
 
         }else {
             // 黑旗走法
-            if (newBoard[x][y]!='2'){
-                newBoard[x][y] = '1';
-                ans = moveNextStep(newBoard,x+1,y+1,targetX,targetY,isNextPlayer)||
-                        moveNextStep(newBoard,x+1,y-1,targetX,targetY,isNextPlayer);
-                if (!ans){
-                    System.out.println(x+" "+y);
-                    newBoard[x][y] = tmp;
-                }
+            newBoard[x][y] = '1';
+            ans = moveNextStep(newBoard,x+1,y+1,targetX,targetY,isNextPlayer)||
+                    moveNextStep(newBoard,x+1,y-1,targetX,targetY,isNextPlayer);
+            if (!ans){
+                newBoard[x][y] = tmp;
             }
         }
         return ans;
@@ -145,5 +145,6 @@ public class BoardGameII {
         System.out.println(ans);
 
         bg.move(current,target,false);
+        System.out.println(JSONObject.toJSONString(bg.board));
     }
 }
