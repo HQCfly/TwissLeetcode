@@ -5,6 +5,7 @@ import java.util.Date;
 
 /**
  * 餐厅预定系统
+ *
  * @Author: Twiss
  * @Date: 2022/8/22 11:27 上午
  */
@@ -18,7 +19,7 @@ public class RestaurantBooking {
         String sex;
     }
 
-    class Reservation{
+    class Reservation {
         int reservationId;
         Date timeOfReservation;
         int peopleCount;
@@ -28,12 +29,12 @@ public class RestaurantBooking {
         int bookUserId;
     }
 
-    class Table{
+    class Table {
         int tableId;
         TableStatus status;
     }
 
-    class Restaurant{
+    class Restaurant {
         int restaurantId;
         String restaurantName;
         int restaurantCode;
@@ -41,19 +42,19 @@ public class RestaurantBooking {
         int locationIdentifier;
     }
 
-    class TableSeat{
+    class TableSeat {
         int tableSeatNumber;
         SeatType type;
     }
 
-    class BookInfo{
+    class BookInfo {
         int bookId;
         BookStatus status;
         int tableId;
         int mealId;
     }
 
-    class Bill{
+    class Bill {
         int billId;
         double amount;
         double tip;
@@ -61,18 +62,18 @@ public class RestaurantBooking {
         boolean isPaid;
     }
 
-    class Payment{
+    class Payment {
         int paymentId;
         double amount;
         Date creationData;
     }
 
-    class Meal{
+    class Meal {
         int mealId;
         int mealItemId;
     }
 
-    class MealItem{
+    class MealItem {
         int mealItemId;
         String title;
         String description;
