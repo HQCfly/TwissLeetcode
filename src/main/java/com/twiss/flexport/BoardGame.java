@@ -7,6 +7,7 @@ import java.util.List;
 
 /**
  * 只能网斜前方走
+ *
  * @Author: Twiss
  * @Date: 2022/8/21 4:30 下午
  */
@@ -15,69 +16,69 @@ public class BoardGame {
     private char[][] board;
     private char[][] tmpBoard;
 
-    public BoardGame(){
+    public BoardGame() {
 
     }
 
-    public void move(int[] current, int[] target, boolean isNextPlayer){
-        if (canMove(current,target,isNextPlayer)){
-            if (isNextPlayer){
+    public void move(int[] current, int[] target, boolean isNextPlayer) {
+        if (canMove(current, target, isNextPlayer)) {
+            if (isNextPlayer) {
                 tmpBoard[target[0]][target[1]] = '2';
-            }else {
+            } else {
                 tmpBoard[target[0]][target[1]] = '1';
             }
             board = tmpBoard.clone();
-        }else {
+        } else {
             System.out.println("Target position couldn't arrival!");
         }
     }
 
-    public boolean canMove(int[] current, int[] target, boolean isNextPlayer){
-         tmpBoard = board.clone();
-         int x = current[0];
-         int y = current[1];
-         int targetX = target[0];
-         int targetY = target[1];
-        return moveNextStep(tmpBoard,x,y,targetX,targetY,isNextPlayer);
+    public boolean canMove(int[] current, int[] target, boolean isNextPlayer) {
+        tmpBoard = board.clone();
+        int x = current[0];
+        int y = current[1];
+        int targetX = target[0];
+        int targetY = target[1];
+        return moveNextStep(tmpBoard, x, y, targetX, targetY, isNextPlayer);
     }
 
     private boolean moveNextStep(char[][] newBoard,
-                                 int x,int y,
-                                 int targetX,int targetY,
-                                 boolean isNextPlayer){
+                                 int x, int y,
+                                 int targetX, int targetY,
+                                 boolean isNextPlayer) {
         // 走出范围
         // ||白棋：已经走到x坐标小于目标坐标x了说明无法到达
         // ||黑棋：已经走到x坐标大于目标坐标x了说明无法到达
-        if (x==targetX&&y==targetY){
+        if (x == targetX && y == targetY) {
             return true;
         }
-        if (!inAreas(x,y)||
-                (isNextPlayer&&(targetX>x))||
-                (!isNextPlayer&&(targetX<x))){
+        if (!inAreas(x, y) ||
+                (isNextPlayer && (targetX > x)) ||
+                (!isNextPlayer && (targetX < x))) {
 
             return false;
         }
 
         boolean ans = false;
         char tmp = newBoard[x][y];
-        if (isNextPlayer){
+        if (isNextPlayer) {
             // 白旗走法
-            if (newBoard[x][y]!='1'){
+            if (newBoard[x][y] != '1') {
                 newBoard[x][y] = '2';
-                ans = moveNextStep(newBoard,x-1,y-1,targetX,targetY,isNextPlayer)||
-                        moveNextStep(newBoard,x-1,y+1,targetX,targetY,isNextPlayer);
-                if (!ans){
+                ans = moveNextStep(newBoard, x - 1, y - 1, targetX, targetY, isNextPlayer) ||
+                        moveNextStep(newBoard, x - 1, y + 1, targetX, targetY, isNextPlayer);
+                if (!ans) {
                     newBoard[x][y] = tmp;
                 }
             }
 
-        }else {
+        } else {
             // 黑旗走法
-            if (newBoard[x][y]!='2'){
+            if (newBoard[x][y] != '2') {
                 newBoard[x][y] = '1';
-                ans = moveNextStep(newBoard,x+1,y+1,targetX,targetY,isNextPlayer)||
-                        moveNextStep(newBoard,x+1,y-1,targetX,targetY,isNextPlayer);
-                if (!ans){
+                ans = moveNextStep(newBoard, x + 1, y + 1, targetX, targetY, isNextPlayer) ||
+                        moveNextStep(newBoard, x + 1, y - 1, targetX, targetY, isNextPlayer);
+                if (!ans) {
                     newBoard[x][y] = tmp;
                 }
             }
@@ -87,59 +88,59 @@ public class BoardGame {
 
 
     /**
-     *
      * @param isNextPlayer 那个player的可能要走的steps
      * @return
      */
-    public List<int[]> getAllNextStep(boolean isNextPlayer){
+    public List<int[]> getAllNextStep(boolean isNextPlayer) {
         List<int[]> allNextStep = new ArrayList<>();
-        if (isNextPlayer){
-            getNextStep(board.length-1, board.length-1, allNextStep,isNextPlayer);
-        }else {
-            getNextStep(0,0, allNextStep,isNextPlayer);
+        if (isNextPlayer) {
+            getNextStep(board.length - 1, board.length - 1, allNextStep, isNextPlayer);
+        } else {
+            getNextStep(0, 0, allNextStep, isNextPlayer);
         }
         return allNextStep;
     }
 
-    private void getNextStep(int i,int j,List<int[]> steps,boolean isNextPlayer){
-        if (!inAreas(i,j)){
+    private void getNextStep(int i, int j, List<int[]> steps, boolean isNextPlayer) {
+        if (!inAreas(i, j)) {
             return;
         }
-        if (board[i][j]=='0'){
-            steps.add(new int[]{i,j});
+        if (board[i][j] == '0') {
+            steps.add(new int[]{i, j});
             return;
         }
-        if (isNextPlayer){
+        if (isNextPlayer) {
             // 白旗走法
-            if (board[i][j]=='2'){
-                getNextStep(i-1,j-1,steps,isNextPlayer);
-                getNextStep(i-1,j+1,steps,isNextPlayer);
+            if (board[i][j] == '2') {
+                getNextStep(i - 1, j - 1, steps, isNextPlayer);
+                getNextStep(i - 1, j + 1, steps, isNextPlayer);
             }
 
-        }else {
+        } else {
             // 黑旗走法
-            if (board[i][j]=='1'){
-                getNextStep(i+1,j+1,steps,isNextPlayer);
-                getNextStep(i+1,j-1,steps,isNextPlayer);
+            if (board[i][j] == '1') {
+                getNextStep(i + 1, j + 1, steps, isNextPlayer);
+                getNextStep(i + 1, j - 1, steps, isNextPlayer);
             }
         }
     }
 
-    private boolean inAreas(int i,int j){
-        return 0<=i&&i< board.length&&
-                0<=j&&j<board.length;
+    private boolean inAreas(int i, int j) {
+        return 0 <= i && i < board.length &&
+                0 <= j && j < board.length;
     }
 
-    public static void printArr(char[][] board){
+    public static void printArr(char[][] board) {
         StringBuilder ans = new StringBuilder();
         ans.append("[");
-        for (int i=0;i<board.length;i++){
+        for (int i = 0; i < board.length; i++) {
 
-            for (int j=0;j<board.length;j++){
+            for (int j = 0; j < board.length; j++) {
                 ans.append(board[i][j]);
-                if (j==board.length-1){
+                if (j == board.length - 1) {
                     ans.append(',');
-                };
+                }
+                ;
             }
         }
         ans.append("]");
@@ -150,19 +151,19 @@ public class BoardGame {
         BoardGame bg = new BoardGame();
         int n = 4;
         bg.board = new char[][]{
-                {'1','0','0','0'},
-                {'0','1','0','0'},
-                {'0','0','2','0'},
-                {'0','0','0','2'}
+                {'1', '0', '0', '0'},
+                {'0', '1', '0', '0'},
+                {'0', '0', '2', '0'},
+                {'0', '0', '0', '2'}
         };
         List<int[]> black = bg.getAllNextStep(false);
         System.out.println(JSONObject.toJSONString(black));
-        int[] current = {1,1};
-        int[] target = {3,1};
-        boolean ans = bg.canMove(current,target,false);
+        int[] current = {1, 1};
+        int[] target = {3, 1};
+        boolean ans = bg.canMove(current, target, false);
         System.out.println(ans);
 
-        bg.move(current,target,false);
+        bg.move(current, target, false);
         printArr(bg.board);
     }
 }
