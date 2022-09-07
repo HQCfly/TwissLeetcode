@@ -24,6 +24,7 @@ public class TheSumOfWeight {
         int n = sc.nextInt();
         sc.nextLine();
         String divide = sc.nextLine();
+
         List<List<Integer>> adjacency = new ArrayList<>();
         Map<Integer, Integer> map = new HashMap<>();
         int tmp = Integer.MIN_VALUE;
