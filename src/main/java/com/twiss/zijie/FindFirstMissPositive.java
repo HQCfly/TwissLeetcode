@@ -42,21 +42,21 @@ public class FindFirstMissPositive {
             return -1;
         }
         int n = arr.length;
-        for (int i = 0; i < n;++i){
-            while (arr[i]>0&&arr[i]<=n&&arr[arr[i]-1]!=arr[i]){
-                swap(arr,arr[i]-1,i);
+        for (int i = 0; i < n; ++i) {
+            while (arr[i] > 0 && arr[i] <= n && arr[arr[i] - 1] != arr[i]) {
+                swap(arr, arr[i] - 1, i);
             }
         }
 
-        for (int i=0;i<n;++i){
-            if (arr[i]!=i+1){
-                return i+1;
+        for (int i = 0; i < n; ++i) {
+            if (arr[i] != i + 1) {
+                return i + 1;
             }
         }
-        return n+1;
+        return n + 1;
     }
 
-    private void swap(int[] arr,int i,int j){
+    private void swap(int[] arr, int i, int j) {
         int tmp = arr[i];
         arr[i] = arr[j];
         arr[j] = tmp;
@@ -66,7 +66,7 @@ public class FindFirstMissPositive {
         int[] arr = {1, 2, 0};
         int ans = new FindFirstMissPositive().getNum(arr);
         System.out.println(ans);
-        int[] arr2 = {3,4,-1,1};
+        int[] arr2 = {3, 4, -1, 1};
         int ans2 = new FindFirstMissPositive().getNum(arr2);
         System.out.println(ans2);
     }
