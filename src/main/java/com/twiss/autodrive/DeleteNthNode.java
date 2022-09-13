@@ -6,6 +6,10 @@ package com.twiss.autodrive;
  * @Date: 2022/9/12 5:25 下午
  */
 public class DeleteNthNode {
+
+    public static void main(String[] args) {
+
+    }
 }
 
 class ListNode{
