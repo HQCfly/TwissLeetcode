@@ -7,7 +7,7 @@ package com.twiss.autodrive;
  */
 public class DeleteNthNode {
 
-    public void remove(){
+    public void remove(int n){
 
     }
 
