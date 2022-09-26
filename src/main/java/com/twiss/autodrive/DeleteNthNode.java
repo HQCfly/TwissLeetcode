@@ -12,6 +12,14 @@ public class DeleteNthNode {
         if (node==null){
             return ans;
         }
+        int size = 0;
+        ListNode tmpNode = node;
+        while (tmpNode.next!=null){
+            tmpNode = tmpNode.next;
+            size++;
+        }
+
+        return ans;
     }
 
     public static void main(String[] args) {
